@@ -249,8 +249,9 @@ window.Quarto = {
   <li><a href="#vapply-tapply" id="toc-vapply-tapply" class="nav-link" data-scroll-target="#vapply-tapply"><span class="header-section-number">3.2.4</span> vapply(), tapply()</a></li>
   <li><a href="#վեկտորացում-vectorize" id="toc-վեկտորացում-vectorize" class="nav-link" data-scroll-target="#վեկտորացում-vectorize"><span class="header-section-number">3.2.5</span> Վեկտորացում Vectorize()</a></li>
   <li><a href="#split" id="toc-split" class="nav-link" data-scroll-target="#split"><span class="header-section-number">3.2.6</span> split()</a></li>
-  <li><a href="#խնդիրներ" id="toc-խնդիրներ" class="nav-link" data-scroll-target="#խնդիրներ"><span class="header-section-number">3.2.7</span> Խնդիրներ</a></li>
-  <li><a href="#ամփոփում" id="toc-ամփոփում" class="nav-link" data-scroll-target="#ամփոփում"><span class="header-section-number">3.2.8</span> Ամփոփում</a></li>
+  <li><a href="#aggregate-xtabs" id="toc-aggregate-xtabs" class="nav-link" data-scroll-target="#aggregate-xtabs"><span class="header-section-number">3.2.7</span> aggregate(), xtabs()</a></li>
+  <li><a href="#խնդիրներ" id="toc-խնդիրներ" class="nav-link" data-scroll-target="#խնդիրներ"><span class="header-section-number">3.2.8</span> Խնդիրներ</a></li>
+  <li><a href="#ամփոփում" id="toc-ամփոփում" class="nav-link" data-scroll-target="#ամփոփում"><span class="header-section-number">3.2.9</span> Ամփոփում</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -282,32 +283,31 @@ window.Quarto = {
 <p>Հիմնված է <span class="citation" data-cites="donoho201750">Donoho (<a href="references.html#ref-donoho201750" role="doc-biblioref">2017</a>)</span> հոդվածի վրա։</p>
 <section id="նոր-գիտության-առաջացումը" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="նոր-գիտության-առաջացումը"><span class="header-section-number">3.1.1</span> Նոր գիտության առաջացումը</h3>
-<p>Լայնորեն տարածում գտած ժամանակակից Տվյալագիտություն առարկան (Data Science) իր սկիզբն է առնում 1962թ․-ին Ջոն Թուկիի (John Tukey) հոդվածով <span class="citation" data-cites="tukey1962future">(<a href="references.html#ref-tukey1962future" role="doc-biblioref">Tukey 1962</a>)</span>, որում նա կոչ էր անում ռեֆորմացիայի ենթարկել համալսարանական վիճակագրությունը և մատնացույց էր անում նոր գիտության առաջացումը, որի ուսումնասիրության առարկան տվյալներից սովորելն է կամ՝ տվյալների վերլուծությունը։ Տվյալագիտություն եզրույթը ավելի ուշ է ներմուծվել՝ Բիլլ Քլիվլենդի (Bill Clevelend) կողմից <span class="citation" data-cites="cleveland2001data">(<a href="references.html#ref-cleveland2001data" role="doc-biblioref">Cleveland 2001</a>)</span>: Տվյալագիտության առաջացումը որպես գիտություն, որը զբաղվում է տվյալների հավաքագրմամբ և վերլուծմամբ, ստեղծում է բնական հարց թե ինչո՞վ է այն տարբերվում վիճակագրությունից, մանավանդ կիրառական վիճակագրությունից։ Կիրառական վիճակագրությունը իր ստեղծման օրերից զբաղվել է նման հարցերով և նոր գիտության առաջացման իմաստն անորոշ է։ Այս նորաստեղծ գիտությունը հաճախ ներկայացվում է որպես վիճակագրության և մեքենայական ուսուցման միավորում, որտեղ վերջինն իր հետ բերում է նաև մեծ տվյալների հետ աշխատելու գործիքակազմ։ Նման սահմանումը չի արտահայտում այն մտավոր նորարարությունը, որ ընկած է այս նոր գիտության հիմքում։ Քանզի գիտությունն առհասարակ շուտով վերածվելու է տվյալների որոնք կարելի է վերլուծել, տվյալագիտության բերած նորամուծությունը ոչ միայն տվյալների մեծ ծավալի հետ է կապված, այլ՝ առհասարակ գիտության մեջ տվյալների վերլուծության գիտական հետազոտությունների (scientific studies) առաջացմամբ։ Հետևաբար տվյալագիտության մեջ ցանկացած մեթոդական նորամուծություն իր ազդեցությունն է ունենալու առհասարակ գիտության զարգացման վրա։ Այսպիսով՝ տվյալագիտության առաջացումը նպաստել է փաստերի վրա հիմնված (evidence based) գիտության առաջացմանը։</p>
+<p>Լայնորեն տարածում գտած ժամանակակից տվյալագիտություն(Data Science) առարկան իր սկիզբն է առնում 1962 թ․-ին Ջոն Թուկիի (John Tukey) հոդվածով <span class="citation" data-cites="tukey1962future">(<a href="references.html#ref-tukey1962future" role="doc-biblioref">Tukey 1962</a>)</span>, որտեղ նա կոչ էր անում ռեֆորմի ենթարկել համալսարանական վիճակագրությունը և մատնանշում էր նոր գիտության առաջացումը, որի ուսումնասիրության առարկան տվյալներից սովորելն է, այսինքն՝ տվյալների վերլուծությունը։ «Տվյալագիտություն» եզրույթը ավելի ուշ է ներմուծվել Բիլլ Քլիվլենդի (Bill Clevelend) կողմից <span class="citation" data-cites="cleveland2001data">(<a href="references.html#ref-cleveland2001data" role="doc-biblioref">Cleveland 2001</a>)</span>: Տվյալագիտության առաջացումը որպես գիտություն, որը զբաղվում է տվյալների հավաքագրմամբ և վերլուծմամբ, ստեղծում է բնական հարց՝ թե ինչո՞վ է այն տարբերվում վիճակագրությունից, հատկապես կիրառական վիճակագրությունից։ Կիրառական վիճակագրությունը իր ստեղծման օրերից զբաղվել է նման հարցերով և նոր գիտության առաջացման իմաստն անորոշ է։ Այս նորաստեղծ գիտությունը հաճախ ներկայացվում է որպես վիճակագրության և մեքենայական ուսուցման միավորում, որտեղ վերջինն իր հետ բերում է նաև մեծ տվյալների հետ աշխատելու գործիքակազմ։ Նման սահմանումը չի արտահայտում այն մտավոր նորարարությունը, որն ընկած է այս նոր գիտության հիմքում։ Քանզի գիտությունն առհասարակ արագորեն վերածվում է տվյալների, որոնք կարելի է վերլուծել, տվյալագիտության նորամուծությունը ոչ միայն մեծածավալ տվյալների հետ է կապված, այլև գիտության մեջ տվյալների վերլուծության գիտական ուսումնասիրությունների (scientific studies) առաջացմամբ։ Հետևաբար տվյալագիտության մեջ ցանկացած մեթոդական նորամուծություն իր ազդեցությունն է ունենալու առհասարակ գիտության զարգացման վրա։ Այսպիսով՝ տվյալագիտության առաջացումը նպաստել է փաստերի վրա հիմնված (evidence-based) գիտության առաջացմանը։</p>
 <p>Ինքը Թուկին իր ելակետային հոդվածում այսպես է ընդգծում տվյալագիտության և կիրառական վիճակագրության տարբերությունը. տվյալագիտությունը նոր գիտություն է, ոչ թե մաթեմատիկայի նոր ճյուղ։ Գիտություն համարվելու համար երեք բաղադրիչների առկայությունն է պարտադիր.</p>
-<ol type="1">
-<li>ինտելեկտուալ բովանդակությունը</li>
-<li>հասկանալի կառուցվածքը</li>
-<li>արդյուքների վերջնական հաստատումը տեղի է ունենում փորձի հիման վրա:</li>
-</ol>
-<p>Ըստ այս սահմանման մաթեմատիկան գիտություն չէ, քանի որ նրանում վերջնական հաստատման չափանիշը տրամաբանական ամբողջականության և ապացուցելիության համաձայնեցված տեսակն է: Տվյալագիտությունը բավարարում է այս երեք պայմաններին, հետևաբար այն գիտություն է, որը բնորոշվում է ոչ թե հատուկ ուսումնասիրության առարկայով, այլ ամենուրեք առկա խնդիրներով։</p>
-<p>Թուկին նաև առանձնացրել է չորս ուժեր որոնք առաջ են մղում նոր գիտությանը՝</p>
-<ol type="1">
+<ul>
+<li>ինտելեկտուալ բովանդակությունը,</li>
+<li>հասկանալի կառուցվածքը,</li>
+<li>արդյունքների վերջնական հաստատումը տեղի է ունենում փորձի հիման վրա: Ըստ այս սահմանման՝ մաթեմատիկան գիտություն չէ, քանի որ նրանում վերջնական հաստատման չափանիշը տրամաբանական ամբողջականության և ապացուցելիության համաձայնեցված տեսակն է: Տվյալագիտությունը բավարարում է այս երեք պայմաններին, հետևաբար այն գիտություն է, որը բնորոշվում է ոչ թե հատուկ ուսումնասիրության առարկայով, այլ ամենուրեք առկա խնդիրներով։</li>
+</ul>
+<p>Թուկին նաև առանձնացրել է չորս ուժ, որոնք առաջ են մղում նոր գիտությանը՝</p>
+<ul>
 <li>վիճակագրական տեսությունները,</li>
 <li>արագացող զարգացումները համակարգիչներում և ցուցադրող սարքերում,</li>
 <li>տարբեր ոլորտներում առկա անընդհատ աճող տվյալների զանգվածը,</li>
 <li>ավելի ու ավելի շատ բնագավառներում քանակական արդյունքների վրա շեշտադրումը։</li>
-</ol>
-<p>Կարևոր է նկատել, որ այս հատկանիշների թվարկումից ստացվում է, որ վիճակագրությունը մասամբ է ներառված տվյալագիտությունում։</p>
+</ul>
+<p>Կարևոր է նկատել, որ այս հատկանիշների թվարկումից երևում է, որ վիճակագրությունը մասամբ է ներառված տվյալագիտությունում։</p>
 </section>
 <section id="տվյալագիտության-կարևոր-առանձնահատկությունները" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="տվյալագիտության-կարևոր-առանձնահատկությունները"><span class="header-section-number">3.1.2</span> Տվյալագիտության կարևոր առանձնահատկությունները</h3>
 <section id="հաշվողական-ծրագրային-միջավայրեր-quantitative-programming-environments" class="level4" data-number="3.1.2.1">
 <h4 data-number="3.1.2.1" class="anchored" data-anchor-id="հաշվողական-ծրագրային-միջավայրեր-quantitative-programming-environments"><span class="header-section-number">3.1.2.1</span> Հաշվողական ծրագրային միջավայրեր՝ Quantitative programming environments</h4>
-<p>Վերջին 50 տարիների ընթացքում տվյալների վերլուծության համար ստեղծվել են բավականաչափ հաշվողական ծրագրային միջավայրեր։ Համալսարանական վիճակագրությունում գերիշխող դիրք ունի <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R"> լեզուն։ Այն սկրիպտային (script) լեզու է, որում գործողությունները կատարվում են տող առ տող՝ ճշգրտորեն համապատասխանելով հաշվողական քայլերի հերթականությանը: <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ի կատարած հեղափոխության կարևորագույն առանձնահատկություններից է տեքստային ծրագրերի (code) տարածումը համացանցում և դրանց վերաօգտագործումը այլ օգտատերերի կողմից։ Այս գործընթացը հեշտացվում է նաև վերը նշված առանձնահատկության պատճառով, այն է՝ քայլերի աստիճանական կատարման, հետևաբար փոխելով այլ օգտատերի տեքստային ծրագրի մեկ կամ մի քանի տողը հնարավոր է այն հարմարեցնել ձեր նպատակներին։ Այսպիսով՝ հնարավոր է անընդհատ բարելավել խնդիրների ծրագրային լուծումը, ստեղծելով տեքստային ծրագրերում որոշակի գիտելիքներ և տվյալների վերլուծության ծրագրային կիրառելիությունը դնել գիտական հիմքերի վրա։</p>
+<p>Վերջին 50 տարիների ընթացքում տվյալների վերլուծության համար ստեղծվել են բավականաչափ հաշվողական ծրագրային միջավայրեր։ Համալսարանական վիճակագրությունում գերիշխող դիրք ունի <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R"> լեզուն։ Այն սկրիպտային (script) լեզու է, որտեղ գործողությունները կատարվում են տող առ տող՝ ճշգրտորեն համապատասխանելով հաշվողական քայլերի հերթականությանը: <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ի կատարած հեղափոխության կարևորագույն առանձնահատկություններից է տեքստային ծրագրերի (code) տարածումը համացանցում և դրանց վերաօգտագործումը այլ օգտատերերի կողմից։ Այս գործընթացը հեշտացվում է նաև վերը նշված առանձնահատկության պատճառով, այն է՝ քայլերի աստիճանական կատարման շնորհիվ, հետևաբար փոխելով այլ օգտատերի տեքստային ծրագրի մեկ կամ մի քանի տողը հնարավոր է այն հարմարեցնել ձեր նպատակներին։ Այսպիսով՝ հնարավոր է անընդհատ բարելավել խնդիրների ծրագրային լուծումը, ձևավորել տեքստային ծրագրերում որոշակի գիտելիք և տվյալների վերլուծության ծրագրային կիրառելիությունը դնել գիտական հիմքերի վրա։</p>
 </section>
 <section id="կանխատեսում-և-վիճակագրական-եզրահանգումներ" class="level4" data-number="3.1.2.2">
 <h4 data-number="3.1.2.2" class="anchored" data-anchor-id="կանխատեսում-և-վիճակագրական-եզրահանգումներ"><span class="header-section-number">3.1.2.2</span> Կանխատեսում և վիճակագրական եզրահանգումներ</h4>
-<p>Համալսարանական վիճակագրությունը կարելի է բաժանել երկու մասի՝ վիճակագրական եզրահանգումներ և կանխատեսում (Statistical inference and Prediction)։ Վիճակագրական եզրահանգումներ կատարելիս վիճակագիրները նախ փորձում են համապատասխան մոդել ընտրել, որը լավագույնս կբնութագրի գոյություն ունեցող տվյալները, ապա ընտրված մոդելի հիման վրա կատարվում են եզրահանգումներ անհայտ մեծությունների վերաբերյալ։ Սա համալսարանական վիճակագիրների գերակշռող զբաղմունքն է։ Տվյալագիտության հաջորդ կարևորագույն առանձնահատկությունը համալսարանական վիճակագրության երկրորդ և ավելի քիչ օգտագործվող մասի՝ կանխատեսման վրա շեշտադրում կատարելն է։ Կանխատեսման խնդիրներ լուծելիս մոդելի ընտրություն չի կատարվում, այլ փորձվում են բազմաթիվ կանխատեսման ալգորիթմներ և առաջնայնությունը տրվում է կանխատեսման լավագույն ճշգրտություն ունեցող ալգորիթմին: Կանխատեսման վրա ավելի մեծ շեշտադրումն էլ նպաստել է մեքենայական ուսուցում առարկայի առաջացմանը։</p>
+<p>Համալսարանական վիճակագրությունը կարելի է բաժանել երկու մասի՝ վիճակագրական եզրահանգումներ և կանխատեսում (Statistical inference and Prediction)։ Վիճակագրական եզրահանգումներ կատարելիս վիճակագիրները նախ փորձում են համապատասխան մոդել ընտրել, որը լավագույնս կբնութագրի գոյություն ունեցող տվյալները, ապա ընտրված մոդելի հիման վրա կատարվում են եզրահանգումներ անհայտ մեծությունների վերաբերյալ։ Սա համալսարանական վիճակագիրների գերակշռող զբաղմունքն է։ Տվյալագիտության հաջորդ կարևորագույն առանձնահատկությունը համալսարանական վիճակագրության երկրորդ և հարաբերականորեն ավելի քիչ օգտագործվող մասի՝ կանխատեսման վրա շեշտադրումն է։ Կանխատեսման խնդիրներ լուծելիս հաճախ մոդելի ընտրություն չի կատարվում, այլ փորձվում են բազմաթիվ կանխատեսման ալգորիթմներ և առաջնայնությունը տրվում է կանխատեսման լավագույն ճշգրտություն ունեցող ալգորիթմին: Կանխատեսման վրա ավելի մեծ շեշտադրումն էլ նպաստել է մեքենայական ուսուցում առարկայի առաջացմանը։</p>
 </section>
 <section id="մեքենայական-ուսուցման-հիմնական-պարադիգմը-ctf-the-common-task-framework" class="level4" data-number="3.1.2.3">
 <h4 data-number="3.1.2.3" class="anchored" data-anchor-id="մեքենայական-ուսուցման-հիմնական-պարադիգմը-ctf-the-common-task-framework"><span class="header-section-number">3.1.2.3</span> Մեքենայական ուսուցման հիմնական պարադիգմը՝ CTF (The Common Task Framework)</h4>
@@ -316,61 +316,39 @@ window.Quarto = {
 <section id="տվյալագիտության-ուսումնասիրության-ամբողջ-շրջանակը" class="level4" data-number="3.1.2.4">
 <h4 data-number="3.1.2.4" class="anchored" data-anchor-id="տվյալագիտության-ուսումնասիրության-ամբողջ-շրջանակը"><span class="header-section-number">3.1.2.4</span> Տվյալագիտության ուսումնասիրության ամբողջ շրջանակը</h4>
 <p>Տվյալագիտության ուսումնասիրության ամբողջ շրջանակը կարելի է բաժանել 6 մասի՝</p>
-<ol type="1">
-<li>Տվյալների ուսումնասիրություն և նախապատրաստում (Data Exploration and Preparation)</li>
-</ol>
-<p>Առաջին քայլն է տվյալների հետ աշխատելիս։ Հավաքագրված տվյալները նախ պետք է ուսումնասիրվեն պարզելու համար դրանց հետ կապված խնդիրները։ Օրինակ, եթե հավաքագրվել են տվյալներ մարդկանց վերաբերյալ, ապա պետք է ստուգել, որ մարդկանց սեռը ցույց տվող տվյալների մեջ լինեն միայն երկու հնարավոր արժեքներ, կամ մարդկանց տարիքը ցույց տվող տվյալների մեջ բացասական արժեքներ չլինեն։ Տվյալների սկզբնական ուսումնասիրությունից հետո սկսվում է տվյալների նախապատրաստությունը վերլուծության համար։ Նախապատրաստության ժամանակ կարող են կատարվել ինչպես տվյալների մաքրման աշխատանքներ՝ հեռացնելու տվյալներում բացահայտված խնդիրները, այնպես և կատարվել տվյալների խմբավորման կամ բաժանման գործողություններ՝ դրանք վերլուծության համար ավելի հարմար սարքելու նպատակով։</p>
-<ol start="2" type="1">
-<li>Տվյալների ներկայացում և ձևափոխում (Data Representation and Transformation)</li>
-</ol>
-<p>Այս փուլը հիմնականում ընդգրկում է տվյալների տեղաբաշխումը տարբեր ձևաչափերով ու զանազան կառուցվածքներով։<br>
-Գոյություն ունեն տվյալների բաշխման ինչպես համընդհանուր սկզբունքներ և տեսություններ՝ ինչպես, օրինակ, հարաբերական տվյալների բազաները (Relational databases) այնպես և տվյալների ստացման ոլորտից կախված առանձնահատկություններ (տվյալների ստացման եղանակները՝ պատկերներով ստացված տվյալներ կամ տեքստային տվյալներ՝ քաղված համացանցից): Այս փուլում տվյալագետը պետք է կատարի տվյալների կառուցվածքային վերափոխումներ՝ սկզբանական հավաքագրված տվյալները նոր՝ ավելի բացահայտող տեսքի։</p>
-<ol start="3" type="1">
-<li>Հաշվարկներ տվյալների հետ (Computing with Data)</li>
-</ol>
-<p>Տվյալների վերլուծության ժամանակ տվյալագետն անպայմանորեն ստիպված է լինում կատարելու բարդ հաշվարկներ պարունակող հսկայածավալ պրոյեկտներ, այդ պատճառով հաշվողական արդյունավետության հետ կապված հարցերը պետք է ուշադրության կենտրոնում լինեն։</p>
-<ol start="4" type="1">
-<li>Տվյալների մոդելավորում (Data Modeling)</li>
-</ol>
-<p>Վիճակագրական եզրահանգումներում կատարվում է հավանականային մոդելի ընտրություն, իսկ կանխատեսման մեջ կամ, նույնն է թե՝ մեքենայական ուսուցման մեջ, կատարվում է կանխատեսման ալգորիթմի ընտրություն։</p>
-<ol start="5" type="1">
-<li>Տվյալների պատկերում և ներկայացում (Data Visualization and Presentation)</li>
-</ol>
-<p>Պարզագույն դեպքում սա տվյալների պատկերային ներակայացումն է գոյություն ունեցող գծապատկերների տեսակների միջոցով, օրինակ, սյունապատկերների, բայց հաճախ անհրաժեշտ է լինում գծապատկերների վրա կատարել խնդրի առանձնահատկություններից կախված ոճային փոփոխություններ, օրինակ, գունավորման ընտրություն։ Բայց հաճախ անհրաժեշտություն է առաջանում ստեղծել տվյալների պատկերային ներկայացման նոր մեթոդներ, գծապատկերների նոր տեսակներ։</p>
-<ol start="6" type="1">
-<li>Գիտություն տվյալագիտության վերաբերյալ (Science about Data Science)</li>
-</ol>
-<p>Տվյալների մշակման վերը նշված փուլերը կատարելիս և լուծումների հետ կապված առանձնահատկությունները գիտակցելիս պետք է նաև մտապահել, որ տվյալագիտությունը գիտություն է և մոտեցումները համընդհանուր են՝ անկախ տվյալների առաջացման ոլորտից։ Հետևաբար վերը նշված փուլերի վերաբերյալ համընդհանուր գիտելիքները պետք է վեր հանվեն, քննարկվեն և փոխանցվեն՝ վերաօգտագործման ու հետագա զարգացման համար։</p>
+<ul>
+<li><p>Տվյալների ուսումնասիրություն և նախապատրաստում (Data Exploration and Preparation)։ Առաջին քայլն է տվյալների հետ աշխատելիս։ Հավաքագրված տվյալները նախ պետք է ուսումնասիրվեն՝ պարզելու համար դրանց հետ կապված խնդիրները։ Օրինակ, եթե հավաքագրվել են տվյալներ մարդկանց վերաբերյալ, ապա պետք է ստուգել, որ մարդկանց սեռը ցույց տվող փոփոխականում լինեն միայն երկու հնարավոր արժեքներ, կամ մարդկանց տարիքը ցույց տվող փոփոխականում բացասական արժեքներ չլինեն։ Տվյալների սկզբնական ուսումնասիրությունից հետո սկսվում է տվյալների նախապատրաստությունը վերլուծության համար` ներառյալ տվյալների մաքրում, խմբավորում կամ բաժանում՝ հետագա դրանք վերլուծության հարմարեցման նպատակով։</p></li>
+<li><p>Տվյալների ներկայացում և ձևափոխում (Data Representation and Transformation)։ Այս փուլը հիմնականում ընդգրկում է տվյալների տեղաբաշխումը տարբեր ձևաչափերով ու զանազան կառուցվածքներով։ Գոյություն ունեն տվյալների բաշխման ինչպես համընդհանուր սկզբունքներ և տեսություններ, օրինակ՝ հարաբերական տվյալների բազաներ (Relational databases), ինչպես նաև տվյալների ստացման ոլորտից կախված առանձնահատկություններ (օրինակ՝ պատկերային տվյալներ կամ համացանցից քաղված տեքստային տվյալներ)։ Տվյալագետը կատարում է կառուցվածքային վերափոխումներ՝ սկզբնական տվյալները դարձնելով ավելի բացահայտող տեսքի։</p></li>
+<li><p>Հաշվարկներ տվյալների հետ (Computing with Data)։ Տվյալագետը հաճախ ստիպված է լինում իրականացնել բարդ հաշվարկներ պարունակող հսկայածավալ նախագծեր, ուստի հաշվողական արդյունավետության հարցերը պետք է լինեն ուշադրության կենտրոնում։</p></li>
+<li><p>Տվյալների մոդելավորում (Data Modeling)։ Վիճակագրական եզրահանգումներում կատարվում է հավանականային մոդելի ընտրություն, իսկ կանխատեսման կամ՝ մեքենայական ուսուցման մեջ՝ կանխատեսման ալգորիթմի ընտրություն։</p></li>
+<li><p>Տվյալների պատկերում և ներկայացում (Data Visualization and Presentation)։ Պարզագույն դեպքում սա տվյալների պատկերային ներակայացումն է գոյություն ունեցող գծապատկերների տեսակների միջոցով (օրինակ՝ սյունապատկերներ), սակայն հաճախ պետք է կատարել ոճային փոփոխություններ խնդրի առանձնահատկություններից կախված (օրինակ՝ գունավորում) կամ ստեղծել նոր մեթոդներ և գծապատկերների նոր տեսակներ։</p></li>
+<li><p>Գիտություն տվյալագիտության վերաբերյալ (Science about Data Science)։ Վերոնշյալ փուլերը կատարելիս և լուծումների առանձնահատկությունները գիտակցելիս պետք է հիշել, որ տվյալագիտությունը գիտություն է և մոտեցումները համընդհանուր են՝ անկախ տվյալների առաջացման ոլորտից։ Հետևաբար վերը նշված փուլերի վերաբերյալ գիտելիքները պետք է վեր հանվեն, քննարկվեն և փոխանցվեն՝ վերաօգտագործման ու հետագա զարգացման համար։</p></li>
+</ul>
 </section>
 </section>
 <section id="եզրափակում" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="եզրափակում"><span class="header-section-number">3.1.3</span> Եզրափակում</h3>
-<p>Տվյալների վերլուծության կարևորության աճին զուգահեռ ծրագրավորողների կողմից փորձ էր կատարվում այդ ճյուղն առանձնացնել վիճակագրությունից։ Մեքենայական ուսուցման առաջացումն էլ երբեմն հակադրվում էր դասական, համալսարանական վիճակագրությանը։</p>
-<p>Վերը նշվածը ցույց է տալիս ինչպես նման հակադրության անհրաժեշտության բացակայությունը, այնպես էլ տվյալագիտության լիակատար ինքնուրույնությունը՝ վիճակագրությունից և հաշվողական ծրագրավորումից։</p>
+<p>Տվյալների վերլուծության կարևորության աճին զուգահեռ ծրագրավորողները փորձ են արել այդ ճյուղն առանձնացնել վիճակագրությունից։ Մեքենայական ուսուցման առաջացումն էլ երբեմն հակադրվել է դասական, համալսարանական վիճակագրությանը։ Վերը նշվածը ցույց է տալիս ինչպես նման հակադրության անհրաժեշտության բացակայությունը, այնպես էլ տվյալագիտության լիակատար ինքնուրույնությունը՝ վիճակագրությունից և հաշվողական ծրագրավորումից։</p>
 </section>
 </section>
 <section id="sac" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sac"><span class="header-section-number">3.2</span> Split - Apply - Combine</h2>
-<p>Այս բաժնում ուսումնասիրելու ենք շրջապտույտի ֆունկցիաները՝ Loop Functions, որոնք օգտագործվում են կիրառելու համար բաժանել-կիրառել-միավորել մարտավարությունը՝ (Split-Apply-Combine): Այս մարտավարության նպատակն է բաժանել տվյալները ավելի փոքր մասերի, կիրառել տրված ֆունկցիան մասերի վրա և միավորել ստացված արդյունքները։ Ստորև Նկար @ref(fig:apply)-ում բերված աղյուսակն ամփոփ ներկայացնում է շրջապտույտի ֆունկցիաները։ Ձախ կողմում գրված տողերը ցույց են տալիս օբյեկտի տեսակը, որը փոխանցվում է ֆունկցիային, իսկ սյուները ցույց են տալիս ֆունկցիայի կողմից վերադարձվող օբյեկտի տեսակը։ Գունավորում ունեցող ֆունկցիաները <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում նախասահմանված ֆունկցիաներն են, իսկ սպիտակ ֆունկցիաները Հադլեյ Ուիքհեմի (Hadley Wickham) կողմից ստեղծված <strong>plyr</strong> գրադարանից են <span class="citation" data-cites="R-plyr">(<a href="references.html#ref-R-plyr" role="doc-biblioref">Wickham 2011</a>)</span>։</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<p>Այս բաժնում ուսումնասիրելու ենք շրջապտույտի ֆունկցիաները (Loop Functions), որոնք օգտագործվում են կիրառելու համար «բաժանել-կիրառել-միավորել» (Split-Apply-Combine) մարտավարությունը: Մարտավարության նպատակն է բաժանել տվյալները ավելի փոքր մասերի, կիրառել տրված ֆունկցիան մասերի վրա և միավորել ստացված արդյունքները։ Ստորև նկարում բերված աղյուսակն ամփոփ ներկայացնում է շրջապտույտի ֆունկցիաները։ Ձախ կողմի տողերը ցույց են տալիս օբյեկտի տեսակը, որը փոխանցվում է ֆունկցիային, իսկ սյուները՝ ֆունկցիայի կողմից վերադարձվող օբյեկտի տեսակը։ Գունավորված ֆունկցիաները <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում նախասահմանված ֆունկցիաներն են, իսկ սպիտակները՝ Հադլի Ուիքհեմի (Hadley Wickham) ստեղծված <strong>plyr</strong> գրադարանից <span class="citation" data-cites="R-plyr">(<a href="references.html#ref-R-plyr" role="doc-biblioref">Wickham 2011</a>)</span>։</p>
+<div id="apply" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="images/apply.png" class="img-fluid figure-img" width="5405"></p>
-<figcaption>apply</figcaption>
+<p><img src="images/apply.png" class="img-fluid figure-img"></p>
+<figcaption>Apply</figcaption>
 </figure>
-</div>
-</div>
 </div>
 <section id="lapply-sapply" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="lapply-sapply"><span class="header-section-number">3.2.1</span> lapply(), sapply()</h3>
-<p>Ենթադրենք ունենք ցուցակ, որի մեջ գրված են երեք մատրիցներ և մենք ուզում ենք հաշվել դրանց յուրաքանչյուրի որոշիչը։</p>
+<p>Ենթադրենք ունենք ցուցակ, որի մեջ գրված են երեք մատրից, և ուզում ենք հաշվել դրանցից յուրաքանչյուրի որոշիչը։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>), </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span class="math inline">\(det()\)</span> ֆունկցիային կարելի է որպես արգումենտ տալ միայն մատրից։ Որպեսզի կարողանանք այն կիրառել ցուցակի բոլոր ենթամատրիցների վրա անհրաժեշտ է շրջապտույտի <span class="math inline">\(for\)</span> հրամանով հերթով դուրս հանել ցուցակի բոլոր ենթամատրիցները։</p>
+<p><code>det()</code> ֆունկցիային կարելի է որպես արգումենտ տալ միայն մատրից։ Որպեսզի կարողանանք այն կիրառել ցուցակի բոլոր ենթամատրիցների վրա, անհրաժեշտ է շրջապտույտի հրամանով հերթով դուրս հանել ցուցակի բոլոր ենթամատրիցները։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>deter <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -383,7 +361,7 @@ window.Quarto = {
 <pre><code>[1]     3 -1340   -36</code></pre>
 </div>
 </div>
-<p>Այս ամբողջն ավելի հեշտ կլիներ եթե կարողանայինք <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ին ուղղորդել, որպեսզի այն կիրառեր նույն <span class="math inline">\(det()\)</span> ցուցակի բոլոր ենթամատրիցների համար։ Հենց սրա համար օգտագործում ենք <span class="math inline">\(lapply()\)</span> ֆունկցիան, որն ունի երեք արգումենտ։ Նրան նախ պետք է տալ ցուցակ, որի վրա պետք է ֆունկցիա կիրառել, այնուհետև ֆունկցիան, որն ուզում ենք կիրառել և բազմակետ արգումենտում կարող ենք նշել բոլոր այն արգումենտները, որոնք ուզում ենք փոխանցել նախորդ ֆունկցիային։ <span class="math inline">\(lapply()\)</span> ֆունկցիան միշտ ցուցակ է վերադարձնում։</p>
+<p>Այս ամբողջն ավելի հեշտ կլիներ, եթե կարողանայինք <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ին ուղղորդել, որպեսզի այն կիրառեր նույն ցուցակի բոլոր ենթամատրիցների համար։ Հենց դրա համար օգտագործում ենք <code>lapply()</code> ֆունկցիան, որն ունի երեք արգումենտ. նախ պետք է տալ ցուցակը, ապա՝ կիրառվող ֆունկցիան, և բազմակետ արգումենտում կարելի է նշել բոլոր այն արգումենտները, որոնք ուզում ենք փոխանցել կիրառվող ֆունկցիային։ <code>lapply()</code> ֆունկցիան միշտ վերադարձնում է ցուցակ։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(l, det)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -397,8 +375,8 @@ $M3
 [1] -36</code></pre>
 </div>
 </div>
-<p>Ինչպես երևում է՝ բոլոր մատրիցների անունները պահպանվել են և յուրաքանչյուրի համար հաշվվել է դրա որոշիչը։</p>
-<p>Այժմ ենթադրենք ունենք ցուցակ, որում գրված են երեք վեկտորներ և անհրաժեշտ է հաշվել յուրաքանչյուրի միջին թվաբանականը։</p>
+<p>Ինչպես երևում է, մատրիցների անունները պահպանվել են, և յուրաքանչյուրի համար հաշվվել է դրա որոշիչը։</p>
+<p>Այժմ ենթադրենք ունենք ցուցակ, որում գրված են երեք վեկտոր, և անհրաժեշտ է հաշվել յուրաքանչյուրի միջին թվաբանականը։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">33</span>, <span class="dv">44</span>, <span class="dv">55</span>), <span class="at">b =</span> <span class="fu">c</span>(<span class="dv">56</span>, <span class="sc">-</span><span class="dv">16</span>, <span class="cn">NA</span>), </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">c =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">654</span>, <span class="sc">-</span><span class="dv">567</span>, <span class="sc">-</span><span class="dv">10</span>))</span>
@@ -414,7 +392,7 @@ $c
 [1] 40.5</code></pre>
 </div>
 </div>
-<p>Երկրորդ վեկտորի միջին թվաբանականը <span class="math inline">\(NA\)</span> է քանի որ այդ վեկտորը պարունակում է <span class="math inline">\(NA\)</span> արժեք։ Ինչպես գիտենք՝ <span class="math inline">\(mean()\)</span> ֆունկցիան ունի արգումենտ, որի միջոցով հնարավոր է վեկտորից դուրս հանել <span class="math inline">\(NA\)</span> արժեքները՝ մինչ միջին թվաբանականը հաշվելը, ապա հաշվել միջին թվաբանականը։ Բազմակետ արգումենտի միջոցով <span class="math inline">\(mean()\)</span> ֆունկցիայի այս արգումենտը կարող ենք փոխանցել <span class="math inline">\(lapply()\)</span> ֆունկցիային։</p>
+<p>Երկրորդ վեկտորի միջին թվաբանականը <code>NA</code> է, քանի որ այդ վեկտորը պարունակում է <code>NA</code> արժեք։ Ինչպես գիտենք, <code>mean()</code> ֆունկցիան ունի արգումենտ, որի միջոցով հնարավոր է վեկտորից դուրս հանել <code>NA</code> արժեքները՝ մինչ միջինի հաշվարկը։ Բազմակետ արգումենտի միջոցով <code>mean()</code> ֆունկցիայի այս արգումենտը կարող ենք փոխանցել <code>lapply()</code>-ին։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(l, mean, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -428,11 +406,12 @@ $c
 [1] 40.5</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(lapply()\)</span> ֆունցկիան, որպես արգումենտ ֆունկցիա է ընդունում, հետևաբաև, ինչպես և նմանատիպ այլ դեպքերում հնարավոր է որպես արգումենտ փոխանցել անանուն ֆունկցիա։ Դիտարկենք մատրիցներ պարունակող նախկին ցուցակը և փորձենք դուրս հանել այդ մատրիցներից յուրաքանչյուրի առաջին տողը։</p>
+<p><code>lapply()</code> ֆունցկիան, որպես արգումենտ, ընդունում է ֆունկցիա, հետևաբար, ինչպես նմանատիպ այլ դեպքերում, հնարավոր է որպես արգումենտ փոխանցել անանուն ֆունկցիա։ Դիտարկենք մատրիցներ պարունակող նախկին ցուցակը և փորձենք դուրս հանել այդ մատրիցներից յուրաքանչյուրի առաջին տողը։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$M1
      [,1] [,2]
@@ -461,11 +440,12 @@ $M3
 [1] 18  0</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(sapply()\)</span> ֆունկցիան կատարում է նույն գործողությունները ինչ <span class="math inline">\(lapply()\)</span> ֆունկցիան, պարզապես հնարավորության դեպքում վերադարձվող ցուցակը պարզեցվում է (s=simplify) և վերադարձվում է համասեռ վեկտոր (երբ վերադարձվող ցուցակի յուրաքանչյուր կոորդինատ մեկ երկարությամբ համասեռ վեկտոր է), մատրից (եթե վերադարձվող ցուցակի յուրաքանչյուր կոորդինատ մեկից մեծ և մյուսներին հավասար երկարությամբ համասեռ վեկտոր է), իսկ երբ հնարավոր չէ պարզեցնել, վերադարձվում է ցուցակ։</p>
+<p><code>sapply()</code> ֆունկցիան կատարում է նույն գործողությունները, ինչ <code>lapply()</code>-ը, պարզապես հնարավորության դեպքում վերադարձվող ցուցակը պարզեցվում է <code>(s = simplify)</code> և վերադարձվում է համասեռ վեկտոր (երբ վերադարձվող ցուցակի յուրաքանչյուր տարր մեկ երկարությամբ համասեռ վեկտոր է), մատրից (եթե վերադարձվող ցուցակի յուրաքանչյուր տարր մեկից մեծ և մյուսներին հավասար երկարությամբ համասեռ վեկտոր է), իսկ երբ հնարավոր չէ պարզեցնել, վերադարձվում է ցուցակ։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(l, det)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(l, det)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   M1    M2    M3 
     3 -1340   -36 </code></pre>
@@ -477,9 +457,10 @@ $M3
 <pre><code>   a    b    c 
 36.0 20.0 40.5 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>),</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(l, <span class="cf">function</span>(x) x[<span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">M1 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>), <span class="at">nrow =</span> <span class="dv">2</span>), </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">M2 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">31</span>, <span class="dv">44</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">M3 =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">87</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(l, <span class="cf">function</span>(x) x[<span class="dv">1</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     M1 M2 M3
 [1,]  2 12 18
@@ -489,7 +470,7 @@ $M3
 </section>
 <section id="apply" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="apply"><span class="header-section-number">3.2.2</span> apply()</h3>
-<p><span class="math inline">\(apply()\)</span> ֆունկցիան կիրառվում է զանգվածների, այդ թվում մատրիցների վրա։ Այս ֆունկցիայի առաջին արգումենտը զանգվածն է, որի վրա ուզում ենք ֆունկցիա կիրառել, երկրորդը՝ չափողականությունն է, որն օգտագործվելու է զանգվածի հետ աշխատելիս, իսկ երրորդը՝ ֆունկցիան է, որը պետք է կիրառել։ Բազմակետ արգումենտը ևս առկա է։ Որպես օրինակ դիտարկենք հետևյալ մատրիցը՝</p>
+<p><code>apply()</code> ֆունկցիան կիրառվում է զանգվածների, այդ թվում՝ մատրիցների վրա։ Առաջին արգումենտը զանգվածն է, որի վրա ուզում ենք ֆունկցիա կիրառել, երկրորդը՝ չափողականությունը (margin), որն օգտագործվելու է զանգվածի հետ աշխատելիս, իսկ երրորդը՝ կիրառվող ֆունկցիան։ Բազմակետ արգումենտը ևս առկա է։ Օրինակ.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -502,7 +483,7 @@ $M3
 [5,]    5   10   15   20</code></pre>
 </div>
 </div>
-<p>Օգտվելով նախորդ ֆունկցիայից՝ կարող ենք հաշվել այս մատրիցի տողերի կամ սյուների միջինները, հիշելով, որ տողերն առաջին չափողականությունն են, սյուները՝ երկրորդ։</p>
+<p>Տողերն առաջին չափողականությունն են, սյուները՝ երկրորդ, և կարող ենք հաշվել միջինները.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(M, <span class="dv">1</span>, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -513,14 +494,14 @@ $M3
 <pre><code>[1]  3  8 13 18</code></pre>
 </div>
 </div>
-<p><span class="math inline">\(apply()\)</span> ֆունկցիայի վերը նշված գործածությունն այնքան հաճախակի է, որ գոյություն ունեն առաձին ֆունցկիաներ, որոնք կատարում են նշված գործողությունները՝ էլ ավելի հեշտացնելով այս ֆունկցիաների կիրառումը։</p>
+<p>Այս օգտագործումն այնքան հաճախ է, որ գոյություն ունեն առանձին արագացված ֆունկցիաներ՝</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(x) <span class="ot">=</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, sum)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(x) <span class="ot">=</span> <span class="fu">apply</span>(x, <span class="dv">1</span>, mean)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(x) <span class="ot">=</span> <span class="fu">apply</span>(x, <span class="dv">2</span>, sum)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(x) <span class="ot">=</span> <span class="fu">apply</span>(x, <span class="dv">2</span>, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Բացի ավելի կարճ գրառում ունենալը, այս ֆունկցիաները շատ ավելի արագ կիրագործեն հաշվարկը, քան <span class="math inline">\(apply()\)</span> ֆունկցիայի միջոցով նույնն անելը։ Եթե կիրառելու ենք այլ ֆունցկիաներ, ապա կարող ենք փոխանցել այդ ֆունկցիաների արգումենտները ևս՝</p>
+<p>Բացի ավելի կարճ գրառում ունենալուց, այս ֆունկցիաները շատ ավելի արագ կիրագործեն հաշվարկը, քան <code>apply()</code>-ով նույնն անելը։ Եթե կիրառվելու են այլ ֆունցկիաներ, կարող ենք փոխանցել դրանց արգումենտները ևս՝</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x, <span class="dv">1</span>, quantile, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -533,7 +514,7 @@ $M3
 </section>
 <section id="mapply" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="mapply"><span class="header-section-number">3.2.3</span> mapply()</h3>
-<p>Նախորդ ֆունկցիաները տրված օբյեկտի ենթաօբյեկտները հաջորդաբար փոխանցում էին տրված ֆունկցիային՝ որպես արգումենտ։ Այժմ ենթադրենք, որ ունենք մի քանի օբյեկտներ, որոնց ենթաօբյեկտները հաջորդաբար փոխանցվում են տրված ֆունկցիայի տարբեր արգումենտներին։ Ֆունկցիայի միաժամանակյա կանչումը տարբեր փոփոխականներին արժեքներ տալով կատարվում է <span class="math inline">\(mapply()\)</span> ֆունկցիայի միջոցով։ Դիտարկենք հետևյալ օրինակը։ Ենթադրենք տրված է հետևյալ ուղղանկյուն տվյալը՝</p>
+<p>Նախորդ ֆունկցիաները տրված օբյեկտի ենթաօբյեկտները հաջորդաբար փոխանցում էին տրված ֆունկցիային՝ որպես արգումենտ։ Այժմ ենթադրենք, որ ունենք մի քանի օբյեկտներ, որոնց ենթաօբյեկտները հաջորդաբար փոխանցվում են տրված ֆունկցիայի տարբեր արգումենտներին։ Ֆունկցիայի միաժամանակյա կանչումը տարբեր փոփոխականներին արժեքներ տալով կատարվում է <code>mapply()</code> ֆունկցիայի միջոցով։ Դիտարկենք հետևյալ օրինակը։ Ենթադրենք տրված է հետևյալ ուղղանկյուն տվյալը՝</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> airquality[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -545,11 +526,11 @@ $M3
       11.00      115.75        9.70       85.00 </code></pre>
 </div>
 </div>
-<p><span class="math inline">\(mapply()\)</span> ֆունկցիայի առաջին արգումենտը ֆունկցիան է, որն ուզում ենք կիրառել, երկրորդը՝ արգումենտը որը պետք է փոպանցել այդ ֆունկցիային և այլն։ Բացի այդ, կիրառվող ֆունկցիայի ևս մեկ արգումենտի լռելյալն արժեքը փոխվել է՝ <span class="math inline">\(na.rm = T\)</span>:</p>
+<p><code>mapply()</code> ֆունկցիայի առաջին արգումենտը ֆունկցիան է, որն ուզում ենք կիրառել, երկրորդը՝ արգումենտը որը պետք է փոպանցել այդ ֆունկցիային և այլն։ Բացի այդ, կիրառվող ֆունկցիայի ևս մեկ արգումենտի լռելյալն արժեքը փոխվել է՝ <code>na.rm = T</code>:</p>
 </section>
 <section id="vapply-tapply" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="vapply-tapply"><span class="header-section-number">3.2.4</span> vapply(), tapply()</h3>
-<p><span class="math inline">\(vapply()\)</span> կատարում է նույն գործառույթները ինչ <span class="math inline">\(sapply()\)</span> ֆունկցիան տարբերությամբ, որ վերջինը փորձում է հնարավորինս պարզեցնել վերջնական արդյունքները, իսկ առաջինը թույլ է տալիս օգտագործողին նշել տեսակը, որով, եթե հնարավոր է, ուզում ենք ստանալ արդյունքները։ Եթե նշված տեսակով հնարավոր չէ արդյունքները ներկայացնել, տեղի է ունենում սխալ։ Սա թույլ է տալիս խոսափել անակնկալ տեսքով տվյալները ստանալուց, որը հետագայում կարող է սխալ արդյունքի բերել։</p>
+<p><code>vapply()</code> կատարում է նույն գործառույթները ինչ <code>sapply()</code> ֆունկցիան տարբերությամբ, որ վերջինը փորձում է հնարավորինս պարզեցնել վերջնական արդյունքները, իսկ առաջինը թույլ է տալիս օգտագործողին նշել տեսակը, որով, եթե հնարավոր է, ուզում ենք ստանալ արդյունքները։ Եթե նշված տեսակով հնարավոր չէ արդյունքները ներկայացնել, տեղի է ունենում սխալ։ Սա թույլ է տալիս խոսափել անակնկալ տեսքով տվյալները ստանալուց, որը հետագայում կարող է սխալ արդյունքի բերել։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(airquality,class,<span class="fu">character</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -557,7 +538,7 @@ $M3
 "integer" "integer" "numeric" "integer" "integer" "integer" </code></pre>
 </div>
 </div>
-<p>Հաջորդ ֆունկցիան հենց իրագործում է բաժանել-կիրառել-միավորել մարտավարությունը։ Ենթադրենք պետք է տվյալները բաժանել մասերի, կիրառել մասերի վրա տրված ֆունկցիան և միավորել ստացված արդյունքները։ Ֆունկցիան կոչվում է <span class="math inline">\(tapply(),\)</span> որտեղ <span class="math inline">\(t\)</span> նշանակում է <span class="math inline">\(table\)</span>: Դիտարկենք նախասահմանված <span class="math inline">\(UCBAdmissions\)</span> ուղղանկյունաձև տվյալները, որը պարունակում է Բերկլիի համալսարանի վեց ամենամեծ դեպարտամենտներում ընդունված ուսանողների քանակները 1973 թվականին։</p>
+<p>Հաջորդ ֆունկցիան հենց իրագործում է բաժանել-կիրառել-միավորել մարտավարությունը։ Ենթադրենք պետք է տվյալները բաժանել մասերի, կիրառել մասերի վրա տրված ֆունկցիան և միավորել ստացված արդյունքները։ Ֆունկցիան կոչվում է <code>tapply()</code>, որտեղ <code>t</code> նշանակում է <code>table</code>: Դիտարկենք նախասահմանված <code>UCBAdmissions</code> ուղղանկյունաձև տվյալները, որը պարունակում է Բերկլիի համալսարանի վեց ամենամեծ դեպարտամենտներում ընդունված ուսանողների քանակները 1973 թվականին։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>UCBAdmissions <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(UCBAdmissions)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(UCBAdmissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -599,7 +580,7 @@ Female      557     1278</code></pre>
 <h3 data-number="3.2.5" class="anchored" data-anchor-id="վեկտորացում-vectorize"><span class="header-section-number">3.2.5</span> Վեկտորացում Vectorize()</h3>
 <p>Ինչպես բազմիցս նշել ենք՝ <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R"> լեզվի ուժեղ կողմերից է վեկտորական գործողությունների առկայությունը: Թվաբանական գործողություններ կատարելիս ինչպես նաև շատ այլ ֆունկցիաներ կիրառելիս հնարավոր է որպես արգումենտ փոխանցել համասեռ վեկտոր և այդ դեպքում ֆունկցիան իր գործառույթները կկատարի կոորդինատ առ կոորդինատ։ Այդպիսի ֆունկցիաները կոչվում են վեկտորացված ֆունկցիաներ։ Վեկտորացված ֆունկցիաների օրինակներ են մաթեմատիկական ֆունկցիաները, ինչպես օրինակ, քառակուսի արմատ հանող ֆունկցիան՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)</span>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.000000 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751
@@ -624,11 +605,11 @@ Female      557     1278</code></pre>
 </div>
 <p>Սահմանենք վերը բերված ֆունկցիան <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>f<span class="ot">&lt;-</span><span class="cf">function</span>(x){</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x<span class="sc">&lt;</span><span class="dv">0</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    y<span class="ot">&lt;-</span>x</span>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    y<span class="ot">&lt;-</span>x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -701,8 +682,11 @@ Temp     78.6000  83.37500  83.75000  76.73333</code></pre>
 </div>
 <p>Եթե լիներ ֆակտորների պիտակների համադրություն, որին համապատասխան արժեք չգտնվեր, ապա <span class="math inline">\(drop\)</span> արգումենտի <span class="math inline">\(TRUE\)</span> արժեքի միջոցով հնարավոր կլիներ դուրս գցել այդ համադրությունը՝ վերջնական արդյունքը ներկայացնելիս։</p>
 </section>
-<section id="խնդիրներ" class="level3" data-number="3.2.7">
-<h3 data-number="3.2.7" class="anchored" data-anchor-id="խնդիրներ"><span class="header-section-number">3.2.7</span> Խնդիրներ</h3>
+<section id="aggregate-xtabs" class="level3" data-number="3.2.7">
+<h3 data-number="3.2.7" class="anchored" data-anchor-id="aggregate-xtabs"><span class="header-section-number">3.2.7</span> aggregate(), xtabs()</h3>
+</section>
+<section id="խնդիրներ" class="level3" data-number="3.2.8">
+<h3 data-number="3.2.8" class="anchored" data-anchor-id="խնդիրներ"><span class="header-section-number">3.2.8</span> Խնդիրներ</h3>
 <ol type="1">
 <li>Տրված ուղղանկյունաձև տվյալների համար պարզել յուրաքանչյուր սյան տեսակը։</li>
 </ol>
@@ -963,24 +947,21 @@ $z
 </div>
 </div>
 </section>
-<section id="ամփոփում" class="level3" data-number="3.2.8">
-<h3 data-number="3.2.8" class="anchored" data-anchor-id="ամփոփում"><span class="header-section-number">3.2.8</span> Ամփոփում</h3>
+<section id="ամփոփում" class="level3" data-number="3.2.9">
+<h3 data-number="3.2.9" class="anchored" data-anchor-id="ամփոփում"><span class="header-section-number">3.2.9</span> Ամփոփում</h3>
 <ul>
 <li>Loop Functions</li>
+<li>Split - Apply - Combine</li>
 </ul>
 <p>Functions</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(); <span class="fu">sapply</span>()</span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>()</span>
-<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(); <span class="fu">rowMeans</span>(); <span class="fu">colSums</span>(); <span class="fu">colMeans</span>();</span>
-<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(); <span class="fu">mapply</span>(); <span class="fu">tapply</span>()</span>
-<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-9"><a href="#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="fu">Vectorize</span>()</span>
-<span id="cb99-10"><a href="#cb99-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-11"><a href="#cb99-11" aria-hidden="true" tabindex="-1"></a><span class="fu">split</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">lapply</span>(); <span class="fu">sapply</span>()</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">apply</span>()</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">rowSums</span>(); <span class="fu">rowMeans</span>(); <span class="fu">colSums</span>(); <span class="fu">colMeans</span>()</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">vapply</span>(); <span class="fu">mapply</span>(); <span class="fu">tapply</span>()</span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">Vectorize</span>()</span>
+<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">split</span>()</span>
+<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">aggregate</span>(); <span class="fu">xtabs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
