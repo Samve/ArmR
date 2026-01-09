@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -275,6 +295,10 @@ window.Quarto = {
   <li><a href="#խնդիրներ-2" id="toc-խնդիրներ-2" class="nav-link" data-scroll-target="#խնդիրներ-2"><span class="header-section-number">2.5.11</span> Խնդիրներ</a></li>
   <li><a href="#ամփոփում-4" id="toc-ամփոփում-4" class="nav-link" data-scroll-target="#ամփոփում-4"><span class="header-section-number">2.5.12</span> Ամփոփում</a></li>
   </ul></li>
+  <li><a href="#շարան-գործողություն-the-pipe-operator" id="toc-շարան-գործողություն-the-pipe-operator" class="nav-link" data-scroll-target="#շարան-գործողություն-the-pipe-operator"><span class="header-section-number">2.6</span> Շարան գործողություն (the pipe operator)</a>
+  <ul class="collapse">
+  <li><a href="#նախաբան" id="toc-նախաբան" class="nav-link" data-scroll-target="#նախաբան"><span class="header-section-number">2.6.1</span> Նախաբան</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -406,7 +430,7 @@ window.Quarto = {
 <section id="փոփոխականներ" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="փոփոխականներ"><span class="header-section-number">2.1.3</span> Փոփոխականներ</h3>
 <p>Փոփոխական ստեղծելիս նրա տեսակը նախապես չի հայտարարվում։ Վերագրման գործողությունը կատարելիս ծրագիրն ինքը կարող է կռահել փոփոխականի տեսակը։ Այս պատճառով հնարավոր է անգամ գոյություն ունեցող փոփոխականին վերագրել այլ տեսակի արժեք, այդ դեպքում հին արժեքն իր տեսակով կջնջվի և փոփոխականում կպահվի նոր արժեքն իր տեսակով։ Փոփոխականին հնարավոր է վերագրել ցանկացած օբյեկտ, օրինակ, ֆունկցիա (տե՛ս հաջորդ ենթաբաժնում։)</p>
-<p><img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում կան սահմանափակումներ փոփոխականի անուններ ընտրելիս։ Փոփոխականի անունը կարող է պարունակել թվեր, տառեր, կետ կամ ստորին գծիկ՝ “_“։ Անունը կարող է սկսվել միայն տառով կամ կետով (այս դեպքում հաջորդը չի կարող թիվ լինել), բացի այդ, ինչպես նշվեց, <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ը տարբերակում է մեծատառերը և փոքրատառերը, հետևաբար պետք է ուշադիր լինել անուն ընտրելիս։</p>
+<p><img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում կան սահմանափակումներ փոփոխականի անուններ ընտրելիս։ Փոփոխականի անունը կարող է պարունակել թվեր, տառեր, կետ կամ ստորին գծիկ՝ “_”։ Անունը կարող է սկսվել միայն տառով կամ կետով (այս դեպքում հաջորդը չի կարող թիվ լինել), բացի այդ, ինչպես նշվեց, <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ը տարբերակում է մեծատառերը և փոքրատառերը, հետևաբար պետք է ուշադիր լինել անուն ընտրելիս։</p>
 </section>
 <section id="ֆունկցիաներ" class="level3" data-number="2.1.4">
 <h3 data-number="2.1.4" class="anchored" data-anchor-id="ֆունկցիաներ"><span class="header-section-number">2.1.4</span> Ֆունկցիաներ</h3>
@@ -483,7 +507,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.5.1 (2025-06-13 ucrt)
+<pre><code>R version 4.5.2 (2025-10-31 ucrt)
 Platform: x86_64-w64-mingw32/x64
 Running under: Windows 11 x64 (build 26100)
 
@@ -504,17 +528,17 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 loaded via a namespace (and not attached):
- [1] htmlwidgets_1.6.4 compiler_4.5.1    fastmap_1.2.0     cli_3.6.5        
- [5] tools_4.5.1       htmltools_0.5.8.1 rstudioapi_0.17.1 rmarkdown_2.29   
- [9] knitr_1.50        jsonlite_2.0.0    xfun_0.53         digest_0.6.37    
-[13] rlang_1.1.6       evaluate_1.0.5   </code></pre>
+ [1] htmlwidgets_1.6.4 compiler_4.5.2    fastmap_1.2.0     cli_3.6.5        
+ [5] tools_4.5.2       htmltools_0.5.9   otel_0.2.0        rstudioapi_0.17.1
+ [9] rmarkdown_2.30    knitr_1.51        jsonlite_2.0.0    xfun_0.55        
+[13] digest_0.6.39     rlang_1.1.6       evaluate_1.0.5   </code></pre>
 </div>
 </div>
 <p><img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում նախասահմանված բոլոր ֆունկցիաները խմբավորված են նախասահմանված հիմնական գրադարաններից որևէ մեկում (base packages), որոնք յոթն են և միշտ ակտիվացված են (attached packages)։</p>
 </section>
 <section id="ակտիվացնել-գրադարաններ" class="level3" data-number="2.1.5">
 <h3 data-number="2.1.5" class="anchored" data-anchor-id="ակտիվացնել-գրադարաններ"><span class="header-section-number">2.1.5</span> Ակտիվացնել գրադարաններ</h3>
-<p><img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում գրադարան ակտիվացնելու համար կարող են օգտագործվել հետևյալ ֆունկցիաները, որոնք որպես արժեք ընդունում են ակտիվացվող գրադարանի անունը, որը նախապես պետք է տեղադրված լինի։ Ստորև ներկայացված են տեղադրման և ակտիվացման ֆունկցիաները՝ <code>HistData</code> դրադարանի համար։</p>
+<p><img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում գրադարան ակտիվացնելու համար կարող են օգտագործվել հետևյալ ֆունկցիաները, որոնք որպես արժեք ընդունում են ակտիվացվող գրադարանի անունը, որը նախապես պետք է տեղադրված լինի։ Ստորև ներկայացված են տեղադրման և ակտիվացման ֆունկցիաները՝ <code>HistData</code> գրադարանի համար։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("HistData")</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HistData) <span class="co">#or</span></span>
@@ -536,26 +560,27 @@ loaded via a namespace (and not attached):
 [25] "Mayer"             "Michelson"         "MichelsonSets"    
 [28] "Minard.cities"     "Minard.temp"       "Minard.troops"    
 [31] "Nightingale"       "OldMaps"           "PearsonLee"       
-[34] "PolioTrials"       "Pollen"            "Prostitutes"      
-[37] "Pyx"               "Quarrels"          "Saturn"           
-[40] "Sdeaths"           "Sdensity"          "Snow.dates"       
-[43] "Snow.deaths"       "Snow.deaths2"      "Snow.polygons"    
-[46] "Snow.pumps"        "Snow.streets"      "SnowMap"          
-[49] "Splot"             "Spolygons"         "Spumps"           
-[52] "Sscale"            "Sstreets"          "Virginis"         
-[55] "Virginis.interp"   "Wheat"             "Wheat.monarchs"   
-[58] "Yeast"             "YeastD.mat"        "ZeaMays"          </code></pre>
+[34] "Playfair1824"      "PolioTrials"       "Pollen"           
+[37] "Prostitutes"       "Pyx"               "Quarrels"         
+[40] "Saturn"            "Sdeaths"           "Sdensity"         
+[43] "Snow.dates"        "Snow.deaths"       "Snow.deaths2"     
+[46] "Snow.polygons"     "Snow.pumps"        "Snow.streets"     
+[49] "SnowMap"           "Splot"             "Spolygons"        
+[52] "Spumps"            "Sscale"            "Sstreets"         
+[55] "Virginis"          "Virginis.interp"   "Wheat"            
+[58] "Wheat.monarchs"    "Yeast"             "YeastD.mat"       
+[61] "ZeaMays"          </code></pre>
 </div>
 </div>
 <p>Մինչդեռ <code>packageVersion()</code> ֆունկցիան հնարավորություն է տալիս պարզելու գրադարանի թողարկումը, իսկ <code>packageDate()</code> թողարկման տարեթիվը։</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"HistData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] '0.9.3'</code></pre>
+<pre><code>[1] '1.0.0'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageDate</span>(<span class="st">"HistData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-04-08"</code></pre>
+<pre><code>[1] "2025-11-25"</code></pre>
 </div>
 </div>
 <p>Գրադարանը հնարավոր է նաև ապաակտիվացնել։</p>
@@ -1419,7 +1444,7 @@ object length</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb324"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb324-1"><a href="#cb324-1" aria-hidden="true" tabindex="-1"></a>end<span class="sc">-</span>start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.02215004 secs</code></pre>
+<pre><code>Time difference of 0.01115084 secs</code></pre>
 </div>
 </div>
 <p><code>for()</code> կառուցվածքին մանրամասնորեն դեռևս կանդրադառնանք, իսկ <code>Sys.time()</code> ֆունկցիան վերադարձնում է ժամանակի այն պահը երբ այն կանչվել է։</p>
@@ -1924,7 +1949,7 @@ object length</code></pre>
 </div>
 </div>
 <p>Վերջին գործողության ժամանակ մենք նշել ենք երկու տողի և երեք սյուների համարներ։ Վերադարձվել են <span class="math inline">\(2\times 3\)</span> էլեմենտներ՝ այդ երկու տողի և երեք սյան հատման կետերում հայտնված էլեմենտներից կազմված ենթամատրիցը՝</p>
-<p> \includegraphics[width=10cm]G/R1.png </p>
+<p>\includegraphics[width=10cm]G/R1.png </p>
 <p>Հնարավոր է նաև ենթամատրից ստանալիս վերադարձնել բոլոր տողերը կամ բոլոր սյուները՝ դատարկ թողնելով համապատասխան համարի տեղը՝</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb462"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb462-1"><a href="#cb462-1" aria-hidden="true" tabindex="-1"></a>x[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -4023,7 +4048,7 @@ x + y</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x) 
 x + y
-&lt;environment: 0x000001ba1e30f0a8&gt;</code></pre>
+&lt;environment: 0x0000021d391784d0&gt;</code></pre>
 </div>
 </div>
 <p>Ինչպես տեսնում ենք՝ երկու ֆունկցիաներն էլ ունեն նույն կառուցվածքը և կատարում են նույն գործողությունը, միակ տարբերությամբ, որ երկրորդ ֆունկցիայի սահմանման հետ տրված է նաև այն միջավայրը որում այն սահմանված է։ Սա արվում է այն դեպքում, երբ ֆունկցիան սահմանված չէ գլոբալ միջավայրում, այլ որևէ ֆունկցիայի ներսում։</p>
@@ -4046,7 +4071,7 @@ x + y
 </div>
 <div class="sourceCode cell-code" id="cb877"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb877-1"><a href="#cb877-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(fun3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;environment: 0x000001ba1e30f0a8&gt;</code></pre>
+<pre><code>&lt;environment: 0x0000021d391784d0&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb879"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb879-1"><a href="#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get</span>(<span class="st">"y"</span>, <span class="fu">environment</span>(fun1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -4490,8 +4515,20 @@ $objective
 <span id="cb959-5"><a href="#cb959-5" aria-hidden="true" tabindex="-1"></a><span class="fu">optimize</span>()</span>
 <span id="cb959-6"><a href="#cb959-6" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(); <span class="fu">warning</span>(); <span class="fu">stop</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="շարան-գործողություն-the-pipe-operator" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="շարան-գործողություն-the-pipe-operator"><span class="header-section-number">2.6</span> Շարան գործողություն (the pipe operator)</h2>
+<section id="նախաբան" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="նախաբան"><span class="header-section-number">2.6.1</span> Նախաբան</h3>
+<p>Անգլերենում <code>pipe</code> բառը ունի մի քանի իմաստ։ Առաջնային իմաստը, որից էլ <code>|&gt;</code> գործողությունը ստացել է իր անունը, առաջացել է to pipe բայից, որի նշանակություններից մեկն է դասավորել, դարսել, շարան դնել (գործողությունները հերթագայվում են հատ առ հատ)։ Քանի որ անգլերենում այդ բառը և՛ բայ է, և՛ գոյական, երկար (մոտ 20 րոպե) մտածելուց հետո որոշեցինք բառը թարգմանել «շարանել», որպեսզի բնական կերպով առաջանա նաև «շարանել» բայը։ Թեև սա փոխանցում է գործողության հաշվողական իմաստը, այնուամենայնիվ, երբ օպերատորը ներմուծվեց <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում Ստեֆան Միլթոն Բեյչի (Stefan Milton Bache) կողմից <span class="citation" data-cites="magrittr">(<a href="references.html#ref-magrittr" role="doc-biblioref">Bache and Wickham 2025</a>)</span>, այն միաժամանակ խաղում էր բայի/գոյականի այլ իմաստի՝ «ծխամորճի»-ի վրա կատարված բառախաղով և հղում էր անում նկարիչ Ռենե Մագրիտի «Պատկերների դավաճանությունը» («Սա ծխամորճ չէ») աշխատանքին. հենց այդ նկարն էլ օգտագործվել էր նրա կողմից ստեղծված, շարան գործողությունը սահմանող <code>magrittr</code> գրադարանի կազմի նկարում։</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-magrittr" class="csl-entry" role="listitem">
+Bache, Stefan Milton, and Hadley Wickham. 2025. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://doi.org/10.32614/CRAN.package.magrittr">https://doi.org/10.32614/CRAN.package.magrittr</a>.
+</div>
+</div>
 </section>
 </section>
 
