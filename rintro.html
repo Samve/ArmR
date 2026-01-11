@@ -1444,7 +1444,7 @@ object length</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb324"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb324-1"><a href="#cb324-1" aria-hidden="true" tabindex="-1"></a>end<span class="sc">-</span>start</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.01115084 secs</code></pre>
+<pre><code>Time difference of 0.0891459 secs</code></pre>
 </div>
 </div>
 <p><code>for()</code> կառուցվածքին մանրամասնորեն դեռևս կանդրադառնանք, իսկ <code>Sys.time()</code> ֆունկցիան վերադարձնում է ժամանակի այն պահը երբ այն կանչվել է։</p>
@@ -4048,7 +4048,7 @@ x + y</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x) 
 x + y
-&lt;environment: 0x0000021d391784d0&gt;</code></pre>
+&lt;environment: 0x000002a42bda3e38&gt;</code></pre>
 </div>
 </div>
 <p>Ինչպես տեսնում ենք՝ երկու ֆունկցիաներն էլ ունեն նույն կառուցվածքը և կատարում են նույն գործողությունը, միակ տարբերությամբ, որ երկրորդ ֆունկցիայի սահմանման հետ տրված է նաև այն միջավայրը որում այն սահմանված է։ Սա արվում է այն դեպքում, երբ ֆունկցիան սահմանված չէ գլոբալ միջավայրում, այլ որևէ ֆունկցիայի ներսում։</p>
@@ -4071,7 +4071,7 @@ x + y
 </div>
 <div class="sourceCode cell-code" id="cb877"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb877-1"><a href="#cb877-1" aria-hidden="true" tabindex="-1"></a><span class="fu">environment</span>(fun3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;environment: 0x0000021d391784d0&gt;</code></pre>
+<pre><code>&lt;environment: 0x000002a42bda3e38&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb879"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb879-1"><a href="#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get</span>(<span class="st">"y"</span>, <span class="fu">environment</span>(fun1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

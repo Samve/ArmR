@@ -247,7 +247,7 @@ window.Quarto = {
   <li><a href="#apply" id="toc-apply" class="nav-link" data-scroll-target="#apply"><span class="header-section-number">3.2.2</span> apply()</a></li>
   <li><a href="#mapply" id="toc-mapply" class="nav-link" data-scroll-target="#mapply"><span class="header-section-number">3.2.3</span> mapply()</a></li>
   <li><a href="#vapply-tapply" id="toc-vapply-tapply" class="nav-link" data-scroll-target="#vapply-tapply"><span class="header-section-number">3.2.4</span> vapply(), tapply()</a></li>
-  <li><a href="#վեկտորացում-vectorize" id="toc-վեկտորացում-vectorize" class="nav-link" data-scroll-target="#վեկտորացում-vectorize"><span class="header-section-number">3.2.5</span> Վեկտորացում Vectorize()</a></li>
+  <li><a href="#վեկտորացում-vectorize" id="toc-վեկտորացում-vectorize" class="nav-link" data-scroll-target="#վեկտորացում-vectorize"><span class="header-section-number">3.2.5</span> Վեկտորացում՝ Vectorize()</a></li>
   <li><a href="#split" id="toc-split" class="nav-link" data-scroll-target="#split"><span class="header-section-number">3.2.6</span> split()</a></li>
   <li><a href="#aggregate-xtabs" id="toc-aggregate-xtabs" class="nav-link" data-scroll-target="#aggregate-xtabs"><span class="header-section-number">3.2.7</span> aggregate(), xtabs()</a></li>
   <li><a href="#խնդիրներ" id="toc-խնդիրներ" class="nav-link" data-scroll-target="#խնդիրներ"><span class="header-section-number">3.2.8</span> Խնդիրներ</a></li>
@@ -514,38 +514,38 @@ $M3
 </section>
 <section id="mapply" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="mapply"><span class="header-section-number">3.2.3</span> mapply()</h3>
-<p>Նախորդ ֆունկցիաները տրված օբյեկտի ենթաօբյեկտները հաջորդաբար փոխանցում էին տրված ֆունկցիային՝ որպես արգումենտ։ Այժմ ենթադրենք, որ ունենք մի քանի օբյեկտներ, որոնց ենթաօբյեկտները հաջորդաբար փոխանցվում են տրված ֆունկցիայի տարբեր արգումենտներին։ Ֆունկցիայի միաժամանակյա կանչումը տարբեր փոփոխականներին արժեքներ տալով կատարվում է <code>mapply()</code> ֆունկցիայի միջոցով։ Դիտարկենք հետևյալ օրինակը։ Ենթադրենք տրված է հետևյալ ուղղանկյուն տվյալը՝</p>
+<p>Նախորդ ֆունկցիաները տրված օբյեկտի ենթաօբյեկտները հաջորդաբար փոխանցում էին ֆունկցիային՝ որպես արգումենտ։ Այժմ ենթադրենք ունենք մի քանի օբյեկտ, որոնց ենթաօբյեկտները հաջորդաբար փոխանցվում են տրված ֆունկցիայի տարբեր արգումենտներին։ Ֆունկցիաների միաժամանակյա կանչումը տարբեր փոփոխականներին արժեքներ տալով կատարվում է <code>mapply()</code> ֆունկցիայի միջոցով։ Օրինակ՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> airquality[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Հաշվենք ամեն սյան քանորդիչը, ընդ որում՝ առաջինի համար հաշվում ենք 0.1 քանորդիչը, երկրորդի համար՝ 0.25, երրորդի՝ 0.5 և չորրորդի՝ 0.75:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mapply</span>(quantile, M, <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>), <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> airquality[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mapply</span>(<span class="at">FUN =</span> quantile, M, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>), <span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ozone.10% Solar.R.25%    Wind.50%    Temp.75% 
       11.00      115.75        9.70       85.00 </code></pre>
 </div>
 </div>
-<p><code>mapply()</code> ֆունկցիայի առաջին արգումենտը ֆունկցիան է, որն ուզում ենք կիրառել, երկրորդը՝ արգումենտը որը պետք է փոպանցել այդ ֆունկցիային և այլն։ Բացի այդ, կիրառվող ֆունկցիայի ևս մեկ արգումենտի լռելյալն արժեքը փոխվել է՝ <code>na.rm = T</code>:</p>
+<p><code>mapply()</code>-ի առաջին արգումենտը կիրառվող ֆունկցիան է, երկրորդը՝ արգումենտը, որը պետք է փոպանցել այդ ֆունկցիային, և այլն։ Բացի այդ, կիրառվող ֆունկցիայի ևս մեկ արգումենտի լռելյայն արժեքը փոխվել է՝ <code>na.rm = T</code>:</p>
 </section>
 <section id="vapply-tapply" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="vapply-tapply"><span class="header-section-number">3.2.4</span> vapply(), tapply()</h3>
-<p><code>vapply()</code> կատարում է նույն գործառույթները ինչ <code>sapply()</code> ֆունկցիան տարբերությամբ, որ վերջինը փորձում է հնարավորինս պարզեցնել վերջնական արդյունքները, իսկ առաջինը թույլ է տալիս օգտագործողին նշել տեսակը, որով, եթե հնարավոր է, ուզում ենք ստանալ արդյունքները։ Եթե նշված տեսակով հնարավոր չէ արդյունքները ներկայացնել, տեղի է ունենում սխալ։ Սա թույլ է տալիս խոսափել անակնկալ տեսքով տվյալները ստանալուց, որը հետագայում կարող է սխալ արդյունքի բերել։</p>
+<p><code>vapply()</code> կատարում է նույն գործառույթը, ինչ <code>sapply()</code>, տարբերությամբ, որ <code>sapply()</code> փորձելով պարզեցնում է արդյունքը, իսկ <code>vapply()</code> թույլ է տալիս օգտագործողին նախապես նշել վերադարձվող արդյունքի տեսակը։ Եթե նշված տեսակով հնարավոր չէ ներկայացնել արդյունքները, տեղի է ունենում սխալ։ Սա թույլ է տալիս խոսափել անակնկալ ներկայացումներից, որոնք հետագայում կարող են սխալ արդյունքի բերել։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(airquality,class,<span class="fu">character</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vapply</span>(<span class="at">X =</span> airquality, </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> class, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN.VALUE =</span> <span class="fu">character</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Ozone   Solar.R      Wind      Temp     Month       Day 
 "integer" "integer" "numeric" "integer" "integer" "integer" </code></pre>
 </div>
 </div>
-<p>Հաջորդ ֆունկցիան հենց իրագործում է բաժանել-կիրառել-միավորել մարտավարությունը։ Ենթադրենք պետք է տվյալները բաժանել մասերի, կիրառել մասերի վրա տրված ֆունկցիան և միավորել ստացված արդյունքները։ Ֆունկցիան կոչվում է <code>tapply()</code>, որտեղ <code>t</code> նշանակում է <code>table</code>: Դիտարկենք նախասահմանված <code>UCBAdmissions</code> ուղղանկյունաձև տվյալները, որը պարունակում է Բերկլիի համալսարանի վեց ամենամեծ դեպարտամենտներում ընդունված ուսանողների քանակները 1973 թվականին։</p>
+<p>Հաջորդը՝ <code>tapply</code>, հենց իրագործում է «բաժանել-կիրառել-միավորել» մարտավարությունը։ Ենթադրենք պետք է տվյալները բաժանել մասերի, կիրառել մասերի վրա տրված ֆունկցիան և միավորել ստացված արդյունքները։ Ֆունկցիան կոչվում է <code>tapply()</code>, որտեղ <code>t</code> նշանակում է <code>table</code>: Դիտարկենք նախասահմանված <code>UCBAdmissions</code> ուղղանկյունաձև տվյալները, որը պարունակում է Բերկլիի համալսարանի վեց ամենամեծ դեպարտամենտներում ընդունված ուսանողների քանակները 1973 թվականին։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>UCBAdmissions <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(UCBAdmissions)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(UCBAdmissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>UCBAdmissions <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(UCBAdmissions)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(UCBAdmissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24  4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(UCBAdmissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(UCBAdmissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Admit Gender Dept Freq
 1 Admitted   Male    A  512
@@ -558,16 +558,19 @@ $M3
 </div>
 <p>Հաշվենք ընդունված բոլոր ուսանողների մեջ աղջիկների և տղաների քանակները՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(UCBAdmissions<span class="sc">$</span>Freq, UCBAdmissions<span class="sc">$</span>Gender, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> UCBAdmissions<span class="sc">$</span>Freq, </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">INDEX =</span> UCBAdmissions<span class="sc">$</span>Gender, </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Male Female 
   2691   1835 </code></pre>
 </div>
 </div>
-<p>Ինչպես տեսնում ենք՝ ֆունկցիայի առաջին արգումենտը փոփոխականն է, որն ուզում ենք մասերի բաժանել, երկրորդը՝ փոփոխականը, որի միջոցով ուզում ենք տրոհել առաջին փոփոխականը, իսկ երրորդ արգումենտը ֆունկցիան է, որն ուզում ենք կիրառել տրոհված փոփոխականի վրա։</p>
-<p>Կարող ենք անգամ խմբավորման համար երկու փոփոխականներ վերցնել։ Այդ դեպքում փոփոխականները պետք է ընդգրկել ցուցակի մեջ և փոխանցել որպես երկրորդ արգումենտ՝</p>
+<p>Կարելի է անգամ խմբավորել երկու փոփոխականով՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(UCBAdmissions<span class="sc">$</span>Freq, <span class="fu">list</span>(UCBAdmissions<span class="sc">$</span>Gender,UCBAdmissions<span class="sc">$</span>Admit), sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> UCBAdmissions<span class="sc">$</span>Freq,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">INDEX =</span> <span class="fu">list</span>(UCBAdmissions<span class="sc">$</span>Gender,UCBAdmissions<span class="sc">$</span>Admit), </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Admitted Rejected
 Male       1198     1493
@@ -577,81 +580,87 @@ Female      557     1278</code></pre>
 <p>Սա տալիս է յուրաքանչյուր սեռի ընդուված և չընդունված ուսանողների ընդհանուր քանակը։</p>
 </section>
 <section id="վեկտորացում-vectorize" class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="վեկտորացում-vectorize"><span class="header-section-number">3.2.5</span> Վեկտորացում Vectorize()</h3>
-<p>Ինչպես բազմիցս նշել ենք՝ <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R"> լեզվի ուժեղ կողմերից է վեկտորական գործողությունների առկայությունը: Թվաբանական գործողություններ կատարելիս ինչպես նաև շատ այլ ֆունկցիաներ կիրառելիս հնարավոր է որպես արգումենտ փոխանցել համասեռ վեկտոր և այդ դեպքում ֆունկցիան իր գործառույթները կկատարի կոորդինատ առ կոորդինատ։ Այդպիսի ֆունկցիաները կոչվում են վեկտորացված ֆունկցիաներ։ Վեկտորացված ֆունկցիաների օրինակներ են մաթեմատիկական ֆունկցիաները, ինչպես օրինակ, քառակուսի արմատ հանող ֆունկցիան՝</p>
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="վեկտորացում-vectorize"><span class="header-section-number">3.2.5</span> Վեկտորացում՝ Vectorize()</h3>
+<p><img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R"> լեզվի ուժեղ կողմերից է վեկտորական գործողությունների առկայությունը: Թվաբանական գործողություններ կատարելիս, ինչպես նաև շատ այլ ֆունկցիաներ կիրառելիս, հնարավոր է որպես արգումենտ փոխանցել համասեռ վեկտոր, և այդ դեպքում ֆունկցիան իր գործողությունները կկատարի կոորդինատ առ կոորդինատ։ Այդպիսի ֆունկցիաները կոչվում են վեկտորացված ֆունկցիաներ։ Օրինակ՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.000000 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751
  [9] 2.828427 3.000000 3.162278</code></pre>
 </div>
 </div>
-<p>Այս ֆունկցիան ստանալով համասեռ թվային վեկտոր, կիրառեց քառակուսի բարձրացնելու գործողությունն այդ վեկտորի յուրաքանչյուր կոորդինատի վրա և վերադարձնում քառակուսիներից բաղկացած թվային վեկտոր։ Իհարկե կան նաև ֆունկցիաներ որոնք վեկտորացված չեն։ <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում գոյություն ունի հատուկ ֆունկցիա, որը, որպես արգումենտ փոխանցված ֆունկցիան կարող է վեկտորացնել և վերադարձնել տվյալ ֆունկցիայի վեկտորացված տեսակը։ Մինչ այդ ֆունկցիային անդրադառնալը դիտարկենք ոչ վեկտորացված ֆունկցիայի օրինակ։ Դիտարկենք հետևյալ ֆունկցիան՝</p>
+<p>Կան նաև ֆունկցիաներ, որոնք վեկտորացված չեն։ <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում կա <code>Vectorize</code> ֆունկցիա, որը որպես արգումենտ փոխանցված ֆունկցիան կարող է «վեկտորացնել» և վերադարձնել դրա վեկտորացված տարբերակը։ Մինչ այդ, դիտարկենք ոչ վեկտորացված ֆունկցիայի օրինակ.</p>
 <p><span class="math display">\[f(x)=\left\{\begin{matrix}
 &amp;x,\,x&lt;0\\
 &amp;x^2,\,x\geq 0
 \end{matrix}\right.
 \]</span></p>
-<p>Այս ֆունկցիայի ստորև բերված գծապատկերը ստանալու համար անհրաժեշտ է ստանալ այդ ֆունկցիայի արժեքները <span class="math inline">\(x=[-1,1]\)</span> հատվածի կետերում՝</p>
+<p>Այս ֆունկցիայի՝ ստորև բերված գծապատկերը ստանալու համար անհրաժեշտ է ստանալ դրա արժեքները <span class="math inline">\(x=[-1,1]\)</span> հատվածի կետերում՝</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="data_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Սահմանենք վերը բերված ֆունկցիան <img src="images/Rlogo.png" class="img-fluid" style="width:0.2in" alt="R">-ում։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Ակնհայտ է, որ նման ձևով սահմանված ֆունկցիան վեկտորացված չէ, քանի որ <span class="math inline">\(x\)</span> արգումենտն օգտագործվում է <span class="math inline">\(if\)</span> կառուցվածքում պայման ստուգելիս, իսկ այդ դեպքում պայմանը պետք է լինի 1 երկարությամբ տրամաբանական վեկտոր։ Երբ ստացվում է մեկից ավել երկարությամբ վեկտոր, ապա ծրագրային սխալ է տեղի ունենում։</p>
+<p>Այս ֆունկցիայի դեպքում, որովհետև <code>if</code>-ը պահանջում է մեկ երկարությամբ տրամաբանական պայման, վեկտոր փոխանցելուց կստացվի սխալ՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">try</span>(<span class="fu">f</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">try</span>(<span class="fu">f</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Error in if (x &lt; 0) y &lt;- x else y &lt;- x^2 : the condition has length &gt; 1</code></pre>
 </div>
 </div>
-<p>Սա ակնհայտորեն այն արդյունքը չէ, որ մենք ակնկալում էինք։ Անհրաժեշտ արդյունքը ստանալու համար դիտարկենք երեք տարբեր ձևեր։ Նախ կարող ենք օգտագործել <em>apply</em> ընտանիքի ֆունկցիաներից որևէ մեկը՝</p>
+<p>Անհրաժեշտ արդյունքը ստանալու երեք տարբերակ՝</p>
+<ul>
+<li>Oգտագործել <em>apply</em> ընտանիքի ֆունկցիաներից որևէ մեկը՝</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x,f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -5 -4 -3 -2 -1  0  1  4  9 16 25</code></pre>
 </div>
 </div>
-<p>Երկրորդ տարբերակն է՝ այնպես վերասահմանենք տրված ֆունկցիան, որ այն վեկտորացված լինի՝</p>
+<ul>
+<li>Այնպես վերասահմանել ֆունկցիան, որ այն վեկտորացված լինի՝</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>f_ <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, x, x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f_</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>f_ <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>(x <span class="sc">&lt;</span> <span class="dv">0</span>, x, x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f_</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -5 -4 -3 -2 -1  0  1  4  9 16 25</code></pre>
 </div>
 </div>
-<p>Երրորդ ձևն էլ կլինի նախասահմանված <span class="math inline">\(Vectorize()\)</span> ֆունկցիայի միջոցով տրված ֆունկցիան վեկտորացնելը՝</p>
+<ul>
+<li>Կիրառել <code>Vectorize()</code> ֆունկցիան՝ տրված ֆունկցիան վեկտորացնելու համար՝</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>f0<span class="ot">&lt;-</span><span class="fu">Vectorize</span>(f,<span class="st">"x"</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f0</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>f0 <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(f, <span class="st">"x"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f0</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] -5 -4 -3 -2 -1  0  1  4  9 16 25</code></pre>
 </div>
 </div>
-<p>Այդ ֆունկցիայի առաջին արգումենտը ֆունկցիան է, որն ուզում ենք վեկտորացնել, իսկ երկրորդն այն արգումենտն է, որին ուզում ենք վեկտորներ ստանալու հատկություն վերագրել։</p>
 </section>
 <section id="split" class="level3" data-number="3.2.6">
 <h3 data-number="3.2.6" class="anchored" data-anchor-id="split"><span class="header-section-number">3.2.6</span> split()</h3>
-<p><span class="math inline">\(split()\)</span> ֆունկցիան բաժանում է տրված օբյեկտը մասերի՝ օգտագործելով որպես երկրորդ արգումենտ տրված ֆակտորը կամ ֆակտորների ցուցակը։ Այս ֆունկցիան միշտ ցուցակ է վերադարձնում, հետևաբար արդյունքը կարող ենք փոխանցել <span class="math inline">\(sapply()\)</span> կամ <span class="math inline">\(lapply()\)</span> ֆունկցիաներին։ <span class="math inline">\(split()\)</span> և <span class="math inline">\(lapply()\)</span> ֆունկցիաների միաժամանակյա կիրառումը կտա նույն արդյունքը ինչ <span class="math inline">\(tapply()\)</span> ֆունկցիայի կիրառումը տարբերությամբ, որ վերջինս տրոհում է վեկտորը, հետևաբար որպես արգումենտ փոխանցվող ֆունկցիան կարող է կիրառվել միայն վեկտորի վրա, իսկ <span class="math inline">\(split()\)</span> ֆունկցիան կարող է տրոհել ոչ միան վեկտոր, հետևաբար <span class="math inline">\(lapply()\)</span> ֆունկցիային որպես արգումենտ փոխանցված ֆունկցիան կարող է կիրառվել նաև ոչ վեկտորի վրա։ Որպես օրինակ նորից դիտարկենք <em>airquality</em> ուղղանկյունաձև տվյալները։ Ենթադրենք ուզում ենք հաշվել Օզոնի, Ճառագայթման, Քամու և Ջերմաստիճանի միջին արժեքները՝ ըստ ամսիների։</p>
+<p><code>split()</code> ֆունկցիան բաժանում է տրված օբյեկտը մասերի՝ օգտագործելով որպես երկրորդ արգումենտ տրված ֆակտորը կամ ֆակտորների ցուցակը։ <code>split()</code>-ը միշտ վերադարձնում ՝ ցուցակ, հետևաբար արդյունքը կարող ենք փոխանցել <code>sapply()</code> կամ <code>lapply()</code> ֆունկցիաներին։ <code>split()</code>-ի և <code>lapply()</code>-ի միաժամանակյա կիրառումը կտա նույն արդյունքը, ինչ <code>tapply()</code>-ի կիրառումը, տարբերությամբ, որ <code>tapply()</code>-ն տրոհում է վեկտորը (և, հետևաբար, որպես արգումենտ փոխանցվող ֆունկցիան կարող է կիրառվել միայն վեկտորի վրա), իսկ <code>split()</code>-ը կարող է տրոհել ոչ միայն վեկտոր, ուստի <code>split()</code>-ից ստացված ենթաօբյեկտների վրա կարող ենք կիրառել ֆունկցիաներ, որոնք աշխատում են նաև ոչ-վեկտորների վրա։ Oրինակ՝ <code>airquality</code> տվյալներով, հաշվել Ozone, Solar.R, Wind և Temp միջին արժեքները ըստ ամսիների՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">split</span>(airquality[,<span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span> )], </span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>             airquality<span class="sc">$</span>Month), colMeans, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="at">X =</span> <span class="fu">split</span>(<span class="at">x =</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>)], <span class="at">f =</span> airquality<span class="sc">$</span>Month),</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> colMeans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                5         6          7          8         9
 Ozone    23.61538  29.44444  59.115385  59.961538  31.44828
@@ -660,13 +669,12 @@ Wind     11.62258  10.26667   8.941935   8.793548  10.18000
 Temp     65.54839  79.10000  83.903226  83.967742  76.90000</code></pre>
 </div>
 </div>
-<p>Որպես երկրորդ փոփոխական կարող ենք փոխանցել նաև ֆակտորների ցուցակ, որը պարունակում է խմբավորման մեկից ավելի փոփոխականներ։ <em>airquality</em> ուղղանկյունաձև տվյալներում ստեղծենք նոր փոփոխական, որը ցույց է տալիս թե օրը, որում կատարվել է չափումը զույգ օր է, թե՝ կենտ։ Այդ փոփոխականն էլ օգտագործենք որպես խմբավորման երկրորդ փոփոխական։</p>
+<p>Կարելի է փոխանցել նաև ֆակտորների ցուցակ՝ բազմակի խմբավորման համար։ Ստեղծենք նոր փոփոխական՝ զույգ/կենտ օր.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> airquality</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Day_Type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>Day<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>, <span class="st">"Even"</span>, <span class="st">"Odd"</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">split</span>(dat[,<span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>)], </span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>             <span class="fu">list</span>(dat<span class="sc">$</span>Month, dat<span class="sc">$</span>Day_Type)),colMeans, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> airquality</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Day_Type <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>Day <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"Even"</span>, <span class="st">"Odd"</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="at">X =</span> <span class="fu">split</span>(<span class="at">x =</span> dat[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>)], <span class="at">f =</span> <span class="fu">list</span>(dat<span class="sc">$</span>Month, dat<span class="sc">$</span>Day_Type)), <span class="at">FUN =</span> colMeans, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           5.Even     6.Even     7.Even     8.Even     9.Even     5.Odd
 Ozone    26.38462  23.250000  58.250000  51.928571  29.800000  20.84615
@@ -680,7 +688,7 @@ Wind     10.9000   8.55625   8.20000  10.42667
 Temp     78.6000  83.37500  83.75000  76.73333</code></pre>
 </div>
 </div>
-<p>Եթե լիներ ֆակտորների պիտակների համադրություն, որին համապատասխան արժեք չգտնվեր, ապա <span class="math inline">\(drop\)</span> արգումենտի <span class="math inline">\(TRUE\)</span> արժեքի միջոցով հնարավոր կլիներ դուրս գցել այդ համադրությունը՝ վերջնական արդյունքը ներկայացնելիս։</p>
+<p>Եթե լիներ պիտակների համադրություն, որին համապատասխան արժեք չլիներ, ապա <code>drop</code> արգումենտով հնարավոր այդ համադրությունը դուրս գցել վերջնական արդյունքը ներկայացնելիս։</p>
 </section>
 <section id="aggregate-xtabs" class="level3" data-number="3.2.7">
 <h3 data-number="3.2.7" class="anchored" data-anchor-id="aggregate-xtabs"><span class="header-section-number">3.2.7</span> aggregate(), xtabs()</h3>
@@ -692,15 +700,15 @@ Temp     78.6000  83.37500  83.75000  76.73333</code></pre>
 </ol>
 <p><strong>Լուծում</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> airquality[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>airquality <span class="ot">&lt;-</span> airquality[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
-<p>Պարզապես կիրառելով <span class="math inline">\(class()\)</span> ֆունկցիան կստանանք ուղղանկյունաձև կառուցվածքի տեսակը։ Փոխարենը պետք է կիրառել <span class="math inline">\(class()\)</span> ֆունկցիան ուղղանկյունաձև տվյալների սյուների վրա։ Կիրառենք <span class="math inline">\(sapply()\)</span> ֆունկցիան։ Պարզելու համար թե ինչպես կաշխատի <span class="math inline">\(sapply()\)</span> ֆունկցիան, վերածենք տրված ուղղանկյունաձև տվյալները ցուցակի՝</p>
+<p>Եթե կիրառենեք <code>class()</code> ֆունկցիան, կստանանք ուղղանկյունաձև կառուցվածքի տեսակը։ Փոխարենը պետք է <code>class()</code> ֆունկցիան կիրառել ուղղանկյունաձև տվյալների սյուների վրա՝ <code>sapply()</code> ֆունկցիայի միջոցով։ Պարզելու համար թե ինչպես <code>sapply()</code> ֆունկցիան կաշխատի, տրված ուղղանկյունաձև տվյալները վերածենք ցուցակի՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.list</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.list</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$Ozone
  [1] 41 36 12 18 NA 28 23 19  8 NA
@@ -721,29 +729,32 @@ $Day
  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 </div>
-<p>Այստեղից տեսնում ենք, որ կիրառելով <span class="math inline">\(sapply()\)</span> ֆունկցիան, այն կաշխատի սյուն առ սյուն՝</p>
+<p>Այսպես՝ <code>sapply()</code> ֆունկցիան կկիրառվի սյուն առ սյուն՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(airquality, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(airquality, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Ozone   Solar.R      Wind      Temp     Month       Day 
 "integer" "integer" "numeric" "integer" "integer" "integer" </code></pre>
 </div>
 </div>
-<p>Կարող ենք օգտագործել նաև <span class="math inline">\(apply()\)</span> ֆունկցիան՝</p>
+<p>Կարելի է օգտագործել նաև <code>apply()</code>, նշելով, որ այն պետք է կիրառվի սյուների վրա.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(airquality, <span class="dv">2</span>, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> airquality, <span class="at">MARGIN =</span> <span class="dv">2</span>,</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">FUN =</span> class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Ozone   Solar.R      Wind      Temp     Month       Day 
 "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" </code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li>Տրված է ցուցակ, որը պարունակում է վեկտորներ։ Մեր նպատակն է պարզել յուրաքանչյուր վեկտորի երկարությունը։</li>
+<li>Տրված է ցուցակ, որը պարունակում է վեկտորներ։ Պարզել յուրաքանչյուր վեկտորի երկարությունը։</li>
 </ol>
 <p><strong>Լուծում</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">11</span>,<span class="fl">0.98</span>,<span class="sc">-</span><span class="fl">0.32</span>,<span class="dv">43</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"cda"</span>, <span class="st">"12"</span>), <span class="at">z=</span><span class="st">"c"</span>)</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">11</span>, <span class="fl">0.98</span>, <span class="sc">-</span><span class="fl">0.32</span>, <span class="dv">43</span>), </span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"cda"</span>, <span class="st">"12"</span>),</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">z =</span> <span class="st">"c"</span>)</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$x
 [1] 11.00  0.98 -0.32 43.00
@@ -755,49 +766,57 @@ $z
 [1] "c"</code></pre>
 </div>
 </div>
-<p>Եթե այս ցուցակի վրա կիրառենք <span class="math inline">\(length()\)</span> ֆունկցիան, ապա կստանանք ցուցակի երկարությունը, ոչ թե ցուցակի յուրաքանչյուր ենթաօբյեկտի երկարությունը։</p>
+<p>Եթե կիրառենք <code>length()</code> ֆունկցիան, ապա կստանանք ցուցակի երկարությունը, ոչ թե ցուցակի յուրաքանչյուր ենթաօբյեկտի երկարությունը։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>Փոխարենը՝</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(l, length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(l, length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x y z 
 4 3 1 </code></pre>
 </div>
 </div>
 <ol start="3" type="1">
-<li><strong>airquality</strong> ուղղանկյունաձև տվյալներում հաշվել յուրաքանչյուր ամսվա միջին ջերմաստիճանը, ըստ ամիսների, այնուհետև Օզոնի քանակը ըստ ամիսների, հիշելով, որ վերջին դեպքում փոփոխականը պարունակում է անհայտ արժեքներ։</li>
+<li><code>airquality</code> տվյալներում հաշվել յուրաքանչյուր ամսվա միջին ջերմաստիճանը, ըստ ամիսների, ապա ապա Ozone-ի միջինը ըստ ամիսների՝ հիշելով, որ վերջինը պարունակում է <code>NA</code> անհայտ արժեքներ։</li>
 </ol>
 <p><strong>Լուծում</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(airquality<span class="sc">$</span>Temp, airquality<span class="sc">$</span>Month, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> airquality<span class="sc">$</span>Temp,</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">INDEX =</span> airquality<span class="sc">$</span>Month,</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   5 
 65.1 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(airquality<span class="sc">$</span>Ozone, airquality<span class="sc">$</span>Month, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> airquality<span class="sc">$</span>Ozone,</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">INDEX =</span> airquality<span class="sc">$</span>Month,</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     5 
 23.125 </code></pre>
 </div>
 </div>
 <ol start="4" type="1">
-<li>Սահմանել ֆունկցիա, որը վերադարձնում է տրված թվային փոփոխականի նմազագույն արժեքը, միջինը, կիսորդիչը, միջին քառակուսային շեղումը և առավելագույն արժեքը՝ համասեռ վեկտորի տեսքով։ Կիրառել այդ ֆունկցիան <em>airquality</em> ուղղանկյունաձև տվյալների Օզոն փոփոխականի վրա՝ ըստ ամիսների։</li>
+<li>Սահմանել ֆունկցիա, որը վերադարձնում է տրված թվային փոփոխականի նմազագույնը, միջինը, կիսորդիչը, միջին քառակուսային շեղումը և առավելագույնը՝ համասեռ վեկտորի տեսքով։ Կիրառել այդ ֆունկցիան <code>airquality</code>-ի Ozone փոփոխականի վրա՝ ըստ ամիսների։</li>
 </ol>
 <p><strong>Լուծում</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>Stat <span class="ot">&lt;-</span><span class="cf">function</span>(x,...){</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">min</span>(x,...), <span class="fu">mean</span>(x,...), <span class="fu">median</span>(x,...), <span class="fu">sd</span>(x,...), <span class="fu">median</span>(x,...))</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Min"</span>, <span class="st">"Mean"</span>, <span class="st">"Median"</span>, <span class="st">"Sd"</span>, <span class="st">"Median"</span>)</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  y</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(airquality<span class="sc">$</span>Ozone, airquality<span class="sc">$</span>Month, Stat, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>Stat <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...){</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(x, ...), <span class="fu">mean</span>(x,...),</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">median</span>(x, ...), <span class="fu">sd</span>(x,...), </span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">median</span>(x, ...))</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(y) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Min"</span>, <span class="st">"Mean"</span>, <span class="st">"Median"</span>, <span class="st">"Sd"</span>, <span class="st">"Median"</span>)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>  y</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> airquality<span class="sc">$</span>Ozone,</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">INDEX =</span> airquality<span class="sc">$</span>Month,</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> Stat, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`5`
     Min    Mean  Median      Sd  Median 
@@ -808,78 +827,76 @@ $z
 <li>Էրատոսթենեսի մաղի հետևյալ իրագործումը գրել առանց շրջապտույտի՝</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">100</span></span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>Y<span class="ot">&lt;-</span><span class="fu">seq_len</span>(n)</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>Y<span class="ot">&lt;-</span>Y[Y<span class="sc">&gt;</span><span class="dv">1</span>]</span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> Y){</span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>  Y<span class="ot">&lt;-</span>Y[Y<span class="sc">%%</span>x<span class="sc">!=</span><span class="dv">0</span><span class="sc">|</span>Y<span class="sc">==</span>x]</span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(n)</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> Y[Y <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> Y){</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> Y[Y <span class="sc">%%</span> x <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">|</span> Y <span class="sc">==</span> x]</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Լուծում</strong></p>
-<p>Օգտագործելու ենք ֆունկցիա, որն աշխատեցնելիս գլոբալ միջավայրում սահմանված համասեռ վեկտորից հեռացվում են պարզ թվեր։</p>
+<p>Օգտագործելու ենք ֆունկցիա, որն աշխատեցնելիս գլոբալ միջավայրում սահմանված համասեռ վեկտորից հեռացվում են պարզ թվերը։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">100</span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span><span class="fu">seq_len</span>(n)</span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>Sieve <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(x<span class="sc">!=</span><span class="dv">1</span>){</span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>   X<span class="ot">&lt;&lt;-</span>X[X<span class="sc">%%</span>x<span class="sc">!=</span><span class="dv">0</span><span class="sc">|</span>X<span class="sc">==</span>x]</span>
-<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a> } </span>
-<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> X<span class="ot">&lt;&lt;-</span>X[X<span class="sc">&gt;</span><span class="dv">1</span>]</span>
-<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>l<span class="ot">&lt;-</span><span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>n,Sieve)</span>
-<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(n)</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>Sieve <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(x <span class="sc">!=</span> <span class="dv">1</span>){</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>   X <span class="ot">&lt;&lt;-</span> X[ X <span class="sc">%%</span> x <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">|</span> X <span class="sc">==</span> x]</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a> } </span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> X <span class="ot">&lt;&lt;-</span> X[ X <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>n, Sieve)</span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  2  3  5  7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(X,Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(X, Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 <ol start="6" type="1">
-<li>Վերասահմանել ստորև բերված ֆունկցիան օգտվելով &lt;&lt;- վերագրման գործողությունից, այնպես որ ֆունկցիայի սահմանման մեջ այլևս <span class="math inline">\(for\)</span> կառուցվածք չլինի։</li>
+<li>Վերասահմանել ստորև բերված ֆունկցիան օգտվելով <code>&lt;&lt;-</code> վերագրման գործողությունից, այնպես որ ֆունկցիայի սահմանման մեջ այլևս <code>for</code> կառուցվածք չլինի։</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>Add_Col <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, NR){</span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  x<span class="ot">&lt;-</span>NR[,<span class="st">"Variable"</span>]</span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> x){</span>
-<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>    dat[,<span class="fu">paste0</span>(i,<span class="st">"FL"</span>)]<span class="ot">&lt;-</span><span class="fu">ifelse</span>(dat[,i]<span class="sc">&lt;</span>NR[NR<span class="sc">$</span>Variable<span class="sc">==</span>i,<span class="st">"Low"</span>],<span class="st">"Below"</span>,</span>
-<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(dat[,i]<span class="sc">&lt;=</span>NR[NR<span class="sc">$</span>Variable<span class="sc">==</span>i,<span class="st">"High"</span>],</span>
-<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"Normal"</span>, <span class="st">"High"</span>))</span>
-<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>  dat</span>
-<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>Add_Col <span class="ot">&lt;-</span> <span class="cf">function</span>(dat, NR){</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> NR[, <span class="st">"Variable"</span>]</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> x){</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>    dat[, <span class="fu">paste0</span>(i, <span class="st">"FL"</span>)] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dat[, i] <span class="sc">&lt;</span> NR[NR<span class="sc">$</span>Variable <span class="sc">==</span> i, <span class="st">"Low"</span>], <span class="st">"Below"</span>, <span class="fu">ifelse</span>(dat[, i] <span class="sc">&lt;=</span> NR[NR<span class="sc">$</span>Variable <span class="sc">==</span> i, <span class="st">"High"</span>], <span class="st">"Normal"</span>, <span class="st">"High"</span>))</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>  dat</span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Լուծում</strong></p>
-<p>Նման դեպքերում ամենապարզ մարտավարությունը <span class="math inline">\(for\)</span> կառուցվածքը մեկ արգումենտանոց ֆունկցիայով փոխարինելն է, այնպես որ այդ արգումենտը կատարի <span class="math inline">\(for\)</span> կառուցվածքի կրկնման փոփոխականի դերը, և կիրառել այդ ֆունկցիան կրկնման փոփոխականի փոփոխման տիրույթը ցույց տվող վեկտորի վրա՝ <span class="math inline">\(apply\)</span> ընդտանիքի ֆունկցիաներից մեկի միջոցով։</p>
+<p>Մարտավարությունը՝ <code>for</code>-ը փոխարինել մեկ արգումենտանոց ֆունկցիայով և կիրառել այդ ֆունկցիան կրկնման փոփոխականի տիրույթի վրա <code>apply</code> ընտանիքի որևէ ֆունկցիայով։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span>airquality</span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>NR<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">Variable=</span><span class="fu">c</span>(<span class="st">"Wind"</span>, <span class="st">"Temp"</span>), <span class="at">Low=</span><span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">70</span>), <span class="at">High=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">80</span>))</span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">as.character</span>(NR[,<span class="st">"Variable"</span>])</span>
-<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>Add_Col2 <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
-<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>    dat[,<span class="fu">paste0</span>(i,<span class="st">"FL"</span>)]<span class="ot">&lt;&lt;-</span><span class="fu">ifelse</span>(dat[,i]<span class="sc">&lt;</span>NR[NR<span class="sc">$</span>Variable<span class="sc">==</span>i,<span class="st">"Low"</span>],<span class="st">"Below"</span>,</span>
-<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">ifelse</span>(dat[,i]<span class="sc">&lt;=</span>NR[NR<span class="sc">$</span>Variable<span class="sc">==</span>i,<span class="st">"High"</span>],</span>
-<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"Normal"</span>, <span class="st">"High"</span>))</span>
-<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">sapply</span>(x,Add_Col2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> airquality</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>NR <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Variable =</span> <span class="fu">c</span>(<span class="st">"Wind"</span>, <span class="st">"Temp"</span>), </span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Low =</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">70</span>), <span class="at">High =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">80</span>))</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">as.character</span>(NR[, <span class="st">"Variable"</span>])</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>Add_Col2 <span class="ot">&lt;-</span> <span class="cf">function</span>(i){</span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>    dat[, <span class="fu">paste0</span>(i,<span class="st">"FL"</span>)] <span class="ot">&lt;&lt;-</span> <span class="fu">ifelse</span>(dat[, i] <span class="sc">&lt;</span> NR[NR<span class="sc">$</span>Variable <span class="sc">==</span> i, <span class="st">"Low"</span>], <span class="st">"Below"</span>,</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(dat[, i] <span class="sc">&lt;=</span> NR[NR<span class="sc">$</span>Variable <span class="sc">==</span> i, <span class="st">"High"</span>], <span class="st">"Normal"</span>, <span class="st">"High"</span>))</span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x, Add_Col2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ինչպես տեսնում ենք՝ ուղղանկյուն տվյալները որպես արգումենտ չենք փոխանցում մեր սահմանած ֆունկցիային, քանի որ վերջինս հնարավորություն ունի ոչ միայն ստանալու գլոբալ միջավայրից արժեքներ, այլև փոփոխություններ կատարել գլոբալ միջավայրում։</p>
 <p>Ստորև բերված վերագրման նպատակը գործողությունների կատարման ընթացքը թաքցնելն է։ Մենք չունենք այդ փոփոխականի կարիքը։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">&lt;-</span><span class="fu">sapply</span>(x, Add_Col2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x, Add_Col2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Իրականում նոր ուղղանկյուն տվյալ չի ստեղծվել, այլ գոյություն ունեցողի վրա կատարվել են անհրաժեշտ փոփոխությունները։</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ozone Solar.R Wind Temp Month Day WindFL TempFL
 1    41     190  7.4   67     5   1 Normal  Below
@@ -889,19 +906,19 @@ $z
 5    NA      NA 14.3   56     5   5   High  Below
 6    28      NA 14.9   66     5   6   High  Below</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>WindFL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>WindFL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Below   High Normal 
     33     72     48 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>TempFL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>TempFL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Below   High Normal 
     32     68     53 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>WindFL, dat<span class="sc">$</span>TempFL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(dat<span class="sc">$</span>WindFL, dat<span class="sc">$</span>TempFL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          Below High Normal
@@ -911,21 +928,22 @@ $z
 </div>
 </div>
 <ol start="7" type="1">
-<li><strong>airquality</strong> ուղղանկյունաձև տվյալներում Ջերմաստիճանը համարվում է նորմալ, եթե այն գտնվում է <span class="math inline">\([68,86]\)</span> միջակայքում։ Եթե Ջերմաստիճանը ցածր է այս միջակայքից, ապա Ջերմաստիճանը համարվում է ցուրտ, եթե բարձր է, ապա՝ տաք։ Հաշվել Ջերմաստիճանի ամեն դասակարգման համար Օզոնի լայնքի միջնակետը (լայնքի միջնակետը նվազագույն և առավելագույն արժեքների միջին թվաբանականն է)։ Օգտագործել անանուն ֆունկցիա։ Լուծել նույն խնդիրը, բայց այս անգամ դասակարգումը վերցնել ըստ ամսիների, իսկ ամիսների ներսում՝ ըստ Ջերմաստիճանի դասակարգման։</li>
+<li><code>airquality</code>-ում Ջերմաստիճանը նորմալ է, եթե այն գտնվում է <span class="math inline">\([68,86]\)</span> միջակայքում։ Եթե ցածր է՝ համարվում է ցուրտ, եթե բարձր է՝ տաք։ Հաշվել Ջերմաստիճանի յուրաքանչյուր դասակարգման համար Ozone-ի լայնքի միջնակետը (լայնքի միջնակետը նվազագույն և առավելագույն արժեքների միջին թվաբանականն է)։ Օգտագործել անանուն ֆունկցիա։</li>
 </ol>
+<p>Այնուհետև նույնը՝ ըստ ամիսների և ամիսների ներսում՝ ըստ Temp դասակարգման։</p>
 <p><strong>Լուծում</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span>airquality</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Temp.C<span class="ot">&lt;-</span><span class="fu">ifelse</span>(dat<span class="sc">$</span>Temp<span class="sc">&lt;</span><span class="dv">68</span>,<span class="st">"Cold"</span>,<span class="fu">ifelse</span>(dat<span class="sc">$</span>Temp<span class="sc">&lt;=</span><span class="dv">86</span>,<span class="st">"Normal"</span>,<span class="st">"Hot"</span>))</span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>Ozone,dat<span class="sc">$</span>Temp.C, <span class="cf">function</span>(x,...) <span class="fu">mean</span>(<span class="fu">range</span>(x,...)),<span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> airquality</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Temp.C <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(dat<span class="sc">$</span>Temp <span class="sc">&lt;</span> <span class="dv">68</span>, <span class="st">"Cold"</span>, <span class="fu">ifelse</span>(dat<span class="sc">$</span>Temp <span class="sc">&lt;=</span> <span class="dv">86</span>, <span class="st">"Normal"</span>, <span class="st">"Hot"</span>))</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> dat<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> dat<span class="sc">$</span>Temp.C, <span class="at">FUN =</span> <span class="cf">function</span>(x, ...) <span class="fu">mean</span>(<span class="fu">range</span>(x, ...)), <span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Cold    Hot Normal 
   21.0   80.5   87.5 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>Ozone,<span class="fu">list</span>(dat<span class="sc">$</span>Month, dat<span class="sc">$</span>Temp.C), </span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x,...) <span class="fu">mean</span>(<span class="fu">range</span>(x,...)),<span class="at">na.rm=</span>T,<span class="at">drop=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> dat<span class="sc">$</span>Ozone, <span class="at">INDEX =</span> <span class="fu">list</span>(dat<span class="sc">$</span>Month, dat<span class="sc">$</span>Temp.C), </span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">FUN =</span> <span class="cf">function</span>(x,...) <span class="fu">mean</span>(<span class="fu">range</span>(x, ...)), <span class="at">na.rm =</span> T, <span class="at">drop =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Cold  Hot Normal
 5 21.0   NA   58.0
@@ -936,11 +954,11 @@ $z
 </div>
 </div>
 <ol start="8" type="1">
-<li>Գրել անանուն ֆունկցիա, որն ունի մեկ արգումենտ։ Որպես արգումենտ այդ ֆունկցիան ստանում է համասեռ վեկտոր։ Եթե այդ վեկտորը թվային չէ, ապա ֆունկցիան ոչինչ չի վերադարձնում։ Եթե այդ վեկտորը թվային է, ապա ֆունկցիան վերադարձնում է այդ վեկտորի երկրորդ ամենափոքր արժեքը։ Կիրառել այդ ֆունկցիան <span class="math inline">\(airquality\)</span> ուղղանկյուն տվյալների սյուների վրա։</li>
+<li>Գրել անանուն ֆունկցիա, որն ունի մեկ արգումենտ՝ համասեռ վեկտոր։ Եթե այդ վեկտորը թվային չէ, ոչինչ չի վերադարձնում։ Եթե թվային է, վերադարձնում է երկրորդ ամենափոքր արժեքը։ Կիրառել այդ ֆունկցիան <code>airquality</code>-ի սյուների վրա։</li>
 </ol>
 <p><strong>Լուծում</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(airquality,<span class="dv">2</span>,<span class="cf">function</span>(x) <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)) <span class="fu">return</span>(<span class="fu">sort</span>(x)[<span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="at">X =</span> airquality, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="cf">if</span>(<span class="fu">is.numeric</span>(x)) <span class="fu">return</span>(<span class="fu">sort</span>(x)[<span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ozone Solar.R    Wind    Temp   Month     Day 
     4.0     8.0     2.3    57.0     5.0     1.0 </code></pre>
@@ -950,18 +968,17 @@ $z
 <section id="ամփոփում" class="level3" data-number="3.2.9">
 <h3 data-number="3.2.9" class="anchored" data-anchor-id="ամփոփում"><span class="header-section-number">3.2.9</span> Ամփոփում</h3>
 <ul>
-<li>Loop Functions</li>
+<li>Loop Functions/ Functions</li>
 <li>Split - Apply - Combine</li>
 </ul>
-<p>Functions</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">lapply</span>(); <span class="fu">sapply</span>()</span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">apply</span>()</span>
-<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">rowSums</span>(); <span class="fu">rowMeans</span>(); <span class="fu">colSums</span>(); <span class="fu">colMeans</span>()</span>
-<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">vapply</span>(); <span class="fu">mapply</span>(); <span class="fu">tapply</span>()</span>
-<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">Vectorize</span>()</span>
-<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">split</span>()</span>
-<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">aggregate</span>(); <span class="fu">xtabs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">lapply</span>(); <span class="fu">sapply</span>()</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">apply</span>()</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">rowSums</span>(); <span class="fu">rowMeans</span>(); <span class="fu">colSums</span>(); <span class="fu">colMeans</span>()</span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">vapply</span>(); <span class="fu">mapply</span>(); <span class="fu">tapply</span>()</span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">Vectorize</span>()</span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">split</span>()</span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> <span class="fu">aggregate</span>(); <span class="fu">xtabs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
